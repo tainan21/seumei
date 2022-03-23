@@ -1,0 +1,38 @@
+.p-toast.p-toast-top-right {
+    z-index: 1000;
+    top: 7rem;
+}
+.OverScroll{
+    scrollbar-width: thin;
+    scrollbar-color: #eaeaea #FFF;
+}
+.OverScroll::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    width: .4rem;
+    background-color: #fff;
+    border-radius: calc(.25rem - 1px)
+}
+.OverScroll::-webkit-scrollbar:horizontal,
+body::-webkit-scrollbar:horizontal {
+    height: .5rem;
+    background-color: #fff;
+    border-radius: calc(.25rem - 1px);
+}
+
+.OverScroll::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
+    border-radius: 0 calc(.25rem - 1px) calc(.25rem - 1px) 0;
+}
+
+.OverScroll::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+    background-color: #000;
+    outline: 1px solid #000;
+}
+
+.OverScroll::-webkit-scrollbar-thumb:horizontal,
+body::-webkit-scrollbar-thumb:horizontal {
+    background-color: #000;
+    outline: 1px solid #000;
+    border-radius: calc(.25rem - 1px);
+}

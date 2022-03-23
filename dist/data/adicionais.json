@@ -1,0 +1,161 @@
+{
+    "data":[
+        {
+            "codigo": 1,
+            "selected": false,
+            "name": "Hamburguer 150G",
+            "price": 5.50
+
+        },
+        {
+            "codigo": 2,
+            "selected": false,
+            "name": "Hamburguer 120G",
+            "price": 4.50
+        },
+        {
+            "codigo": 3,
+            "selected": false,
+            "name": "Frango 200G",
+            "price": 4.00
+        },
+        {
+            "codigo": 3,
+            "selected": false,
+            "name": "Bacon",
+            "price": 3.00
+        },
+        {
+            "codigo": 4,
+            "selected": false,
+            "name": "Calabresa",
+            "price": 3.00
+        },
+        {
+            "codigo": 5,
+            "selected": false,
+            "name": "Presunto",
+            "price": 1.00
+        },
+        {
+            "codigo": 6,
+            "selected": false,
+            "name": "QueijoPrato",
+            "price": 2.00
+        },
+        {
+            "codigo": 7,
+            "selected": false,
+            "name": "Queijo Cheddar",
+            "price": 2.00
+        },
+        {
+            "codigo": 8,
+            "selected": false,
+            "name": "Cheddar",
+            "price": 3.00
+        },
+        {
+            "codigo": 9,
+            "selected": false,
+            "name": "Catupiry",
+            "price": 3.00
+        },
+        {
+            "codigo": 10,
+            "selected": false,
+            "name": "Cheddar Rings",
+            "price": 4.50
+        },
+        {
+            "codigo": 11,
+            "selected": false,
+            "name": "Mostarda",
+            "price": 0.50
+        },
+        {
+            "codigo": 12,
+            "selected": false,
+            "name": "Barbecue",
+            "price": 1.50
+        },
+        {
+            "codigo": 13,
+            "selected": false,
+            "name": "Alface",
+            "price": 0.50
+        },
+        {
+            "codigo": 14,
+            "selected": false,
+            "name": "Tomate",
+            "price": 0.50
+        },
+        {
+            "codigo": 15,
+            "selected": false,
+            "name": "Pickles",
+            "price": 1.00
+        },
+        {
+            "codigo": 16,
+            "selected": false,
+            "name": "Cebola",
+            "price": 0.50
+        },
+        {
+            "codigo": 17,
+            "selected": false,
+            "name": "Cebola Caramelizada",
+            "price": 1.50
+        },
+        {
+            "codigo": 18,
+            "selected": false,
+            "name": "Cebola Roxa",
+            "price": 0.50
+        },
+        {
+            "codigo": 19,
+            "selected": false,
+            "name": "Ovo Pasteurizado",
+            "price": 1.00
+        },
+        {
+            "codigo": 20,
+            "selected": false,
+            "name": "Onion Rings",
+            "price": 2.00
+        },
+        {
+            "codigo": 21,
+            "selected": false,
+            "name": "Catupiry Empanado",
+            "price": 6.50
+        },
+        {
+            "codigo": 22,
+            "selected": false,
+            "name": "Molho Especial",
+            "price": 1.50
+        },
+        {
+            "codigo": 23,
+            "selected": false,
+            "name": "Hamburguer Vegetariano 120G",
+            "price": 4.50
+        },
+        {
+            "codigo": 24,
+            "selected": false,
+            "name": "Molho Big Bang",
+            "price": 1.50
+        },
+        {
+            "codigo": 25,
+            "selected": false,
+            "name": "Provolone Empanado",
+            "price": 7.00
+        }
+    ]
+}
