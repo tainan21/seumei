@@ -220,8 +220,7 @@ import BottomNavigation from "../components/BottomNavigation.vue";
 				if(carrinho_salvo){
 					this.carrinho_recuperado = JSON.parse(carrinho_salvo)	                                      
                     for (let index = 0; index < this.carrinho_recuperado.length; index++) {
-                       this.pedidos.push(this.carrinho_recuperado[index]);
-                        
+                       this.pedidos.push(this.carrinho_recuperado[index]);                        
                     }                    										
 				}		
                 		
