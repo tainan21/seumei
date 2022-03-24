@@ -68,9 +68,9 @@ export default {
     product_: null,
     selected: 1 ,
     options: [{
-	    id: 1, icon: "pi pi-home", title: "Home", path: '../pages/foodburguer', badge: 15,
+	    id: 1, icon: "pi pi-home", title: "Home", path: '../pages/foodburguer', badge: null,
      },
-		{ id: 2, icon: "pi pi-shopping-cart", title: "Carrinho", path: '../pages/carrinho', badge: 15 },
+		{ id: 2, icon: "pi pi-shopping-cart", title: "Carrinho", path: '../pages/carrinho', badge: null },
 	],
 
     foregroundColor: "#000",
@@ -94,12 +94,9 @@ export default {
   },
   
   methods: {
-    load(index) {
-      this.loading[index] = true;
-      setTimeout(() => this.loading[index] = false, 1000);
-    },
+   
     showSuccess() {
-      this.$toast.add({severity:'success', summary: 'Produto aberto', detail:'Fique atento nos adicionais', life: 3000});
+      this.$toast.add({severity:'success', summary: 'Produto adicionado', detail:'Fique atento nos adicionais', life: 3000});
     },
     add_product() {
         const carrinho_salvo = window.localStorage.getItem("carrinho");
@@ -107,23 +104,28 @@ export default {
           this.carrinho_recuperado = JSON.parse(carrinho_salvo); 
           this.$router.push({ path: '/carrinho' })
         }
-      this.showSuccess()
+      
       this.carrinho_recuperado.push({ payload: this.add_additional() });
       window.localStorage.setItem("carrinho", JSON.stringify(this.carrinho_recuperado));
       
+      
     },
       add_productHome() {
-        const carrinho_salvo = window.localStorage.getItem("carrinho");
+        this.showSuccess()
+        setTimeout(() => {
+           const carrinho_salvo = window.localStorage.getItem("carrinho");
         if (carrinho_salvo) {
           this.carrinho_recuperado = JSON.parse(carrinho_salvo); 
           this.$router.push({ path: '/foodburguer' })
-          this.showSuccess()
+         
 
         }
-      this.showSuccess()
+      
      
       this.carrinho_recuperado.push({ payload: this.add_additional() });
       window.localStorage.setItem("carrinho", JSON.stringify(this.carrinho_recuperado));
+        }, 3000);
+       
       
     },
     add_additional() {
@@ -132,12 +134,10 @@ export default {
 				this.additional.forEach(element => {
 					if(element.selected)
 						this.product_[index].payload.additional.push(element);
-          this.showSuccess()
+          
 
 				});
-       this.showSuccess()
-     
-        console.log("additional", this.product_[index].payload )
+               
         return this.product_[0].payload
 		} 
     },

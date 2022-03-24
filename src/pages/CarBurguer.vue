@@ -101,6 +101,7 @@ import BottomNavigation from "../components/BottomNavigation.vue";
         components: { BottomNavigation },
         data() {
             return {
+                total: null,
                 nomeEmpresa: "Galaxia Burguers",
                 selected: 1,
                 payMoney: null, 
@@ -124,16 +125,16 @@ import BottomNavigation from "../components/BottomNavigation.vue";
                 toggleValue: false,
                 dropdownItem: null,
                 navigation: [{
-                    id: 1, icon: "pi pi-home", title: "Home", path: '../pages/foodburguer', badge: 15,
+                    id: 1, icon: "pi pi-home", title: "Home", path: '../pages/foodburguer', badge: null,
                     },
-                    { id: 2, icon: "pi pi-shopping-cart", title: "Carrinho", path: '../pages/carrinho', badge: 15 },
+                    { id: 2, icon: "pi pi-shopping-cart", title: "Carrinho", path: '../pages/carrinho', badge: null },
                 ],
                 foregroundColor: "#42A5F5",
                 badgeColor: "#FBC02D",
                 dropdownItems: [
-                    {name: 'Estação',  code: 'Option 1', price: 3},
-                    {name: 'Laranjal', code: 'Option 2', price: 4},
-                    {name: 'Centro', code: 'Option 3', price: 5}
+                    {name: 'Estação',  code: 'Option 1', price: 3.00},
+                    {name: 'Laranjal', code: 'Option 2', price: 4.00},
+                    {name: 'Centro', code: 'Option 3', price: 5.00}
                 ],
                 dropdownItemsMoney: [
                     {name: 'Dinheiro',  code: 'Option 1'},
@@ -152,7 +153,8 @@ import BottomNavigation from "../components/BottomNavigation.vue";
                 })
                 return  totalPedidos                               
             },
-			totalAdd() {                
+			totalAdd() { 
+                               
 				let total = 0
 			    this.pedidos.forEach(element =>{
                     total += element.payload.total                    
@@ -162,6 +164,15 @@ import BottomNavigation from "../components/BottomNavigation.vue";
 			}
 		},
         methods: {
+            total_pedido(){
+                this.total = 0
+			    this.pedidos.forEach(element =>{
+                    this.total += element.payload.total                    
+                })
+                this.bairro? this.total += this.bairro.price: null
+                return  this.total 
+
+            },
             excluir_pedido(index){
                 this.pedidos.splice(index, 1)                    
                 window.localStorage.setItem("carrinho", JSON.stringify(this.pedidos));                                                         
@@ -182,21 +193,25 @@ import BottomNavigation from "../components/BottomNavigation.vue";
               });
             },
             format_text() {
+                
+
                 this.pedido_txt += "Olá, me chamo " + this.nome + " Gostaria de fazer o seguinte pedido: \n"
                 this.pedidos.forEach(element => {
-                    this.pedido_txt += element.payload.name + " - Valor:  R$"  
-                    element.payload.additional.length > 0?  this.pedido_txt += element.payload.total + "Adicional(is): "  : null
+                   
+                    this.pedido_txt += element.payload.name + " - Valor:  R$ " + element.payload.total +"\n"  
+                    element.payload.additional.length > 0?  this.pedido_txt += "Adicional(is): \n"  : null
                     element.payload.additional.forEach(add =>{
                          this.pedido_txt += add.name + "\n"
                     })
-                    this.pedido_txt += " ----------------------- \n"  
+                    this.pedido_txt += "----------------------- \n\n"  
                 });
-                this.pedido_txt += "\n -------------------------" + this.address +  ",\n"
-                this.pedido_txt += "\n O pedido irá para o seguinte endereço: " + this.address +  ",\n"
-                this.pedido_txt += "" + this.city + "\n"
-                this.pedido_txt += ", bairro: "+ this.bairro.name + "\n "
-                this.pedido_txt += " O metodo de pagamento será: " + this.payMoney.name + " \n" 
-                this.payMoney.name == 'Dinheiro'?  this.pedido_txt += " com troco para: " + this.troco + " \n" : null
+                this.pedido_txt += "frete: R$ " + this.bairro.price + "\n"                               
+                this.pedido_txt += "O pedido irá para o seguinte endereço: " + this.address +  ",\n"
+                this.pedido_txt += "Cidade: " + this.city + ",\n"
+                this.pedido_txt += "bairro: "+ this.bairro.name + "\n"
+                this.pedido_txt += "O metodo de pagamento será: " + this.payMoney.name + "\n"                 
+                this.payMoney.name == 'Dinheiro'?  this.pedido_txt +="Total a pagar: "+ this.total_pedido() + " Com troco para: " + this.troco + "\n" : null
+                //this.pedido_txt += "total a ser pago: " + this.totalAdd()
                 this.pedido_txt =  window.encodeURIComponent(this.pedido_txt);
                 
             },
@@ -204,7 +219,7 @@ import BottomNavigation from "../components/BottomNavigation.vue";
 				const carrinho_salvo = window.localStorage.getItem('carrinho')
 				if(carrinho_salvo){
 					this.carrinho_recuperado = JSON.parse(carrinho_salvo)	
-                    console.log(this.carrinho_recuperado)	
+                  
                     
                     for (let index = 0; index < this.carrinho_recuperado.length; index++) {
                        this.pedidos.push(this.carrinho_recuperado[index]);
@@ -254,6 +269,7 @@ import BottomNavigation from "../components/BottomNavigation.vue";
             },
         },
         mounted () {
+            console.log(this.pedidos)
             this.teste_getLocalStorage()
             this.total_product()
             },

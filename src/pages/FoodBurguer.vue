@@ -127,9 +127,9 @@ export default {
      },
      selected: 1,
       options: [{
-	    id: 1, icon: "pi pi-home", title: "Home", path: '../pages/foodburguer', badge: 15,
+	    id: 1, icon: "pi pi-home", title: "Home", path: '../pages/foodburguer', badge: null,
      },
-		{ id: 2, icon: "pi pi-shopping-cart", title: "Carrinho", path: '../pages/carrinho', badge: 15 },
+		{ id: 2, icon: "pi pi-shopping-cart", title: "Carrinho", path: '../pages/carrinho', badge: null },
 	],
 	foregroundColor: "#42A5F5",
 	badgeColor: "#FBC02D",
@@ -174,8 +174,7 @@ export default {
             return false;
           else if (data[key] === null && value === "null") continue;
           */
-     filtered_extra_list() {
-      console.log("data", this.dataviewValue)
+     filtered_extra_list() {      
       if(this.dataviewValue){      
         return this.dataviewValue.filter((extra) => {
           for (var [key, value] of Object.entries(this.filters)) {
@@ -241,9 +240,7 @@ export default {
   methods: {
     verify_hour(){
       
-      let hour = moment(new Date()).format(' HH:mm')
-      console.log(hour)
-     
+      let hour = moment(new Date()).format(' HH:mm')         
       let string_hour = hour.split(":");
       if(parseInt(string_hour[0]) > 16){
         return true        
@@ -314,8 +311,7 @@ export default {
 				this.additional.forEach(element => {
 					if(element.selected)
 						this.dataviewValue[index].additional.push(element);
-				});
-        console.log("additional", this.dataviewValue[index] )
+				});        
 				return this.dataviewValue[index]
 			}
 		} 
