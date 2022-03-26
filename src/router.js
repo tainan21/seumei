@@ -3,14 +3,19 @@ import Dashboard from './components/Dashboard.vue';
 
 const routes = [
     {
-        path: '/dashboard',
-        name: 'dashboard',
-        component: Dashboard,
+        path: '/foodburguer',
+        name: 'foodburguer',
+        component: () => import('./pages/FoodBurguer.vue')
     },
     {
         path: '/',
         name: 'formlayout',
         component: () => import('./components/FormLayoutDemo.vue')
+    },
+    {
+        path: '/dashboard',
+        name: 'dashboard',
+        component: Dashboard,
     },
     {
         path: '/input',
@@ -148,11 +153,6 @@ const routes = [
         path: '/icons',
         name: 'icons',
         component: () => import('./components/IconsDemo.vue')
-    },
-    {
-        path: '/foodburguer',
-        name: 'foodburguer',
-        component: () => import('./pages/FoodBurguer.vue')
     },
     {
         path: '/product/:id',
