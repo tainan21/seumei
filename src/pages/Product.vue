@@ -29,10 +29,10 @@
 							<div class="col-12">        
                 <div class="grid grid-nogutter">
                     <div class="col-6 md:col-6 sm:col-12 flex">
-                      <Button label="Adicionar Produto" class="p-button-raised p-button-rounde button-filter mr-2 mt-2"   icon="pi pi-shopping-cart" @click="add_productHome()" />
+                      <Button :disabled="disabled_button" label="Adicionar Produto" class="p-button-raised p-button-rounde button-filter mr-2 mt-2"   icon="pi pi-shopping-cart" @click="add_productHome()" />
                     </div>
                     <div class="col-6 md:col-6 sm:col-12 flex">
-                      <Button label="Finalizar Compra" type="button" class="p-button-raised p-button-rounde button-filter mr-2 mt-2"  icon="pi pi-check" @click="add_product()"  />
+                      <Button :disabled="disabled_button" label="Finalizar Compra" type="button" class="p-button-raised p-button-rounde button-filter mr-2 mt-2"  icon="pi pi-check" @click="add_product()"  />
                     </div>
                   </div>
              </div>
@@ -61,7 +61,7 @@ export default {
   name: "App",
   components: { BottomNavigation },
   data: () => ({
-    
+    disabled_button: false,
     carrinho: null,
     carrinho_recuperado: [],
     loading: [false, false, false],
@@ -112,32 +112,28 @@ export default {
     },
       add_productHome() {
         this.showSuccess()
+        this.disabled_button = true
         setTimeout(() => {
-           const carrinho_salvo = window.localStorage.getItem("carrinho");
-        if (carrinho_salvo) {
-          this.carrinho_recuperado = JSON.parse(carrinho_salvo); 
-          this.$router.push({ path: '/foodburguer' })
-         
-
-        }
-      
-     
-      this.carrinho_recuperado.push({ payload: this.add_additional() });
-      window.localStorage.setItem("carrinho", JSON.stringify(this.carrinho_recuperado));
-        }, 3000);
+          const carrinho_salvo = window.localStorage.getItem("carrinho");
+          if (carrinho_salvo) {
+            this.carrinho_recuperado = JSON.parse(carrinho_salvo); 
+            this.$router.push({ path: '/foodburguer' })         
+          }           
+          this.carrinho_recuperado.push({ payload: this.add_additional() });
+          window.localStorage.setItem("carrinho", JSON.stringify(this.carrinho_recuperado));
+          this.disabled_button = false
+        }, 1500);
        
       
     },
     add_additional() {
 		for (let index = 0; index < this.product_.length; index++) {			
 				this.product_[index].additional = [];
+       
 				this.additional.forEach(element => {
-					if(element.selected)
-						this.product_[index].payload.additional.push(element);
-          
-
-				});
-               
+					if(element.selected && this.product_[index].payload.additional)
+						this.product_[index].payload.additional.push(element);          
+				});                       
         return this.product_[0].payload
 		} 
     },

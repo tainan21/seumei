@@ -3,7 +3,7 @@ import Dashboard from './components/Dashboard.vue';
 
 const routes = [
     {
-        path: '/dashboard',
+        path: '/dashboard',  
         name: 'dashboard',
         component: Dashboard,
     },
