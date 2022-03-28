@@ -1,5 +1,5 @@
 <template>
-  <v-app style=" background-color= rgba(0,0,0,0)">
+  <v-app style="background-color= rgba(0,0,0,0)">
     <RightSideBar />
     <v-container>
       <v-toolbar flat color="rgba(0,0,0,0)">
