@@ -16,7 +16,7 @@
 
 		<div class="col-12">
 			<div class="card card-w-title">
-				<h5>Breadcrumb</h5>
+				<h5>Breadcrumbs</h5>
 				<Breadcrumb :home="breadcrumbHome" :model="breadcrumbItems" />
 			</div>
 		</div>
