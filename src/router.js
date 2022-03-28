@@ -3,15 +3,9 @@ import Dashboard from './components/Dashboard.vue';
 
 const routes = [
     {
-<<<<<<< HEAD
-        path: '/dashboard',  
-        name: 'dashboard',
-        component: Dashboard,
-=======
         path: '/foodburguer',
         name: 'foodburguer',
         component: () => import('./pages/FoodBurguer.vue')
->>>>>>> 0dfb0f5785c6365abf6ecdd2037f1ff05ff10c4f
     },
     {
         path: '/',
