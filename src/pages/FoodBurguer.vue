@@ -1,6 +1,5 @@
 <template class="grid col-12" >
   <div class="bannerLegenda flex align-items-center justify-content-center lg:p-5 p-3">
-    <a class="bartop" href="#"><p class="">idefood</p></a>
 		<div class="fontBanner m-3 text-white">{{name_empresa}}</div>
      <svg viewBox="0 0 124.000000 152.000000" preserveAspectRatio="xMidYMid meet" fill="none" >
           <g id="BG" transform="translate(0.000000,152.000000) scale(0.100000,-0.100000)" enable-background="none" rect="none">
@@ -27,13 +26,15 @@
 							<div class="col-10">
                 <div class="grid grid-nogutter">
                   <Toast />
-                  <div class="col-12 lg:col-4 md:col-5 sm:col-12 flex justify-content-around">
+                  <div class="col-12 lg:col-4 md:col-6 sm:col-12 flex justify-content-around">
                     <Button @click="filters.category = 'Lanches'" icon="pi pi-moon" label="Lanches" class="bg-red-custom button-filter mr-2 mt-2"/>
                     <Button @click="filters.category = 'Porções'" icon="pi pi-moon" label="Porções" class="bg-black-custom  button-filter mr-2 mt-2"/>
                   </div>
-                  <div class="col-12 lg:col-4 md:col-5 sm:col-12 flex justify-content-around">
+                  <div class="col-12 lg:col-4 md:col-6 sm:col-12 flex justify-content-around">
                     <Button @click="filters.category = 'Bebidas'" icon="pi pi-moon" label="Bebidas" class="bg-orange-custom button-filter mr-2 mt-2"/>
                     <Button @click="filters.category = 'Sobremesas'" icon="pi pi-moon" label="Sobremesas" class="bg-redLight-custom button-filter mr-2 mt-2"/>
+                  </div>
+                  <div class="col-12 lg:col-2  sm:col-12 flex justify-content-around">
                     <Button @click="filters.category = ''" icon="pi pi-moon" label="todos" class="bg-redLight-custom button-filter mr-2 mt-2"/>
                   </div>
                   <!--<Button @click="filters.category = 'Todos'" label="Todos" class="p-button-raised p-button-rounde button-filter mr-2 mt-2"/>-->

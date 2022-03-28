@@ -42,7 +42,8 @@
 		"primevue": "^3.11.0",
 		"prismjs": "1.9.0",
 		"vue": "3.2.9",
-		"vue-awesome": "^4.5.0",		
-		"vue-router": "^4.0.0-0"
+		"vue-awesome": "^4.5.0",
+		"vue-router": "^4.0.0-0",
+		"vuetify": "^2.6.4"
 	}
 }

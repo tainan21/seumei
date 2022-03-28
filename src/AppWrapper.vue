@@ -2,6 +2,7 @@
     <Landing v-if="$route.path === '/landing'" @change-theme="changeTheme" />
     <Login v-else-if="$route.path === '/login'" />
     <FoodBurguer v-else-if="$route.path === '/foodburguer'"  />
+    <DesignCoffe v-else-if="$route.path === '/designCoffe'"  />
     <CarBurguer v-else-if="$route.path === '/carrinho'"  />
     <Product v-else-if="$route.path === '/product'"  />
     <Error v-else-if="$route.path === '/error'" />
@@ -15,6 +16,7 @@ import EventBus from './AppEventBus';
 import App from './App';
 import Landing from './pages/LandingDemo';
 import FoodBurguer from './pages/FoodBurguer';
+import DesignCoffe from './pages/designCoffe';
 import Product from './pages/Product';
 import CarBurguer from './pages/CarBurguer';
 import Login from './pages/Login';
@@ -42,6 +44,7 @@ export default {
         Landing,
         Product,    
         CarBurguer,
+        DesignCoffe,
         Login,
         Error,
         NotFound,

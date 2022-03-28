@@ -99,6 +99,14 @@ export default {
 					]
 				},
                 {
+					label: 'Designs', icon: 'pi pi-fw pi-chart-bar',
+					items: [
+                        {label: 'Design de Café', icon: 'pi pi-fw pi-heart-fill', to: '/designCoffe'},
+                        {label: 'Design de Bebidas', icon: 'pi pi-fw pi-chart-bar', to: '/designBebida'},
+                        {label: 'Design de Perfume', icon: 'pi pi-fw pi-chart-bar', to: '/designPerfume'},
+					]
+				},
+                {
 					label: 'Configurações', icon: 'pi pi-fw pi-chart-bar',
 					items: [
                         {label: 'Disparo para clientes', icon: 'pi pi-fw pi-chart-bar', to: '/chart'},

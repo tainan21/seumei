@@ -4,7 +4,7 @@ import Dashboard from './components/Dashboard.vue';
 const routes = [
     {
         path: '/foodburguer',
-        name: 'foodburguer',
+        name: 'faça seu pedido',
         component: () => import('./pages/FoodBurguer.vue')
     },
     {
@@ -133,6 +133,21 @@ const routes = [
         path: '/timeline',
         name: 'timeline',
         component: () => import('./pages/TimelineDemo.vue')
+    },
+    {
+        path: '/designCoffe',
+        name: 'designCoffe',
+        component: () => import('./pages/designCoffe.vue')
+    },
+    {
+        path: '/designPerfume',
+        name: 'designPerfume',
+        component: () => import('./pages/designPerfume.vue')
+    },
+    {
+        path: '/designBebida',
+        name: 'designBebida',
+        component: () => import('./pages/designBebida.vue')
     },
     {
         path: '/empty',

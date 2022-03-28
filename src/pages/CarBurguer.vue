@@ -45,21 +45,30 @@
     		<div class="grid grid-nogutter card">
                 <h5 class="text-center col-12">Informações</h5>
                 <div class="col-12 lg:col-7 md:col-7 sm:col-12 p-1">
-                    <div class="p-fluid formgrid grid">
-                        <div class="field col-12 md:col-12">
-                            <label for="nome" class="form_text">Primeiro nome</label>
-                            <InputText v-model="nome" id="nome" type="text"/>                            
+                    <div class="p-fluid  grid">
+                        <div class="field col-12 md:col-12 margin_border">
+                            <span class="p-float-label p-input-icon-left">
+                                <i class="pi pi-user" />
+                                <InputText id="nome" type="text" v-model="nome" class="input_formT"/>
+                                <label for="nome" class="form_tex" >Primeiro nome</label>
+                            </span>
                         </div>
-                        <div class="field col-12">
-                            <label for="address">Endereço</label>
-                            <InputText  v-model="address" id="address"  type="text"/>
+                        <div class="field col-12 mb-3">
+                             <span class="p-float-label p-input-icon-left">
+                                <i class="pi pi-user" />
+                                <InputText v-model="address" id="address"  type="text" class="input_formT"/>
+                                <label for="address" class="form_tex" >Endereço</label>
+                            </span>
                         </div>
-                        <div class="field col-12 md:col-6">
-                            <label for="city">Cidade</label>
-                            <InputText v-model="city" id="city" type="text" />
+                        <div class="field col-12 md:col-6 margin_border">
+                             <span class="p-float-label p-input-icon-left mt-5">
+                                <i class="pi pi-user" />
+                                <InputText v-model="city" id="city" type="text" class="input_formT"/>
+                                <label for="city" class="form_tex" >Cidade</label>
+                            </span>
                         </div>
-                        <div class="field col-12 md:col-6">
-                            <label for="state">Bairro</label>
+                        <div class="field col-12 md:col-6 margin_border">
+                            <label for="state" class="form_text">Bairro</label>
                             <Dropdown id="bairro" v-model="bairro" :options="dropdownItems" optionLabel="name" placeholder="Bairro"></Dropdown>
                             <h6><span class="mr-1 mt-1 legenda" v-if="bairro" >Valor do Frete R$: {{bairro.price}}</span></h6>
                         </div>
@@ -275,6 +284,9 @@ import BottomNavigation from "../components/BottomNavigation.vue";
 
 <style scoped>
 
+.margin_border{
+    margin-bottom: 30px;
+ }
 .border-title{
     border-color: #e8eaed;
     padding: 10px 0;
@@ -474,5 +486,24 @@ import BottomNavigation from "../components/BottomNavigation.vue";
     background: transparent;
     justify-content: center;
     color: rgb(0, 0, 0) !important;
+}
+.input_formT{
+    outline: none;
+    border: none;
+    background: transparent;
+    border-bottom: 1px solid rgba(5,5,5, 0.5);
+    color: #fefdf9;
+}
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+    -webkit-text-fill-color: #000;
+    -webkit-box-shadow: 0 0 0px 1000px #FFF inset;
+}
+input:-internal-autofill-selected {
+    appearance: menulist-button;
+    background-image: none !important;
+    background-color:  rgba(5,5,5, 0.5) !important;
+    color: #fefdf9 !important;
 }
 </style>
