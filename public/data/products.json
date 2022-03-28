@@ -498,23 +498,7 @@
 			"id": "37",
 			"code": "37",
 			"name": "Copo de Churros Laka",
-<<<<<<< HEAD
-			"image": "36.jpg",
-			"price": 13,
-			"category": "Sobremesas",
-			"quantity": 1,
-			"inventoryStatus": "Em estoque",
-			"rating": 5,
-			"additional":[],			
-			"optional": false
-		},
-		{
-			"id": "38",
-			"code": "38",
-			"name": "Copo de Churros Ovomaltine",
-=======
 			"description": "GRANULADOS: Preto, Colorido Amendoim e Paçoca",
->>>>>>> 0dfb0f5785c6365abf6ecdd2037f1ff05ff10c4f
 			"image": "36.jpg",
 			"price": 14,
 			"category": "Sobremesas",
@@ -525,22 +509,6 @@
 			"optional": false
 		},
 		{
-<<<<<<< HEAD
-			"id": "39",
-			"code": "39",
-			"name": "Copo de Churros Sonho de Valsa",
-			"image": "36.jpg",
-			"price": 15,
-			"category": "Sobremesas",
-			"quantity": 1,
-			"inventoryStatus": "Em estoque",
-			"rating": 5,
-			"additional":[],			
-			"optional": false
-		},
-		{
-=======
->>>>>>> 0dfb0f5785c6365abf6ecdd2037f1ff05ff10c4f
 			"id": "40",
 			"code": "40",
 			"name": "Copo de Churros Nutella",
@@ -555,35 +523,6 @@
 			"optional": false
 		},
 		{
-<<<<<<< HEAD
-			"id": "42",
-			"code": "42",
-			"name": "Fritas Pequena",
-			"image": "35.jpg",
-			"price": 4,
-			"category": "Porções",
-			"quantity": 1,
-			"inventoryStatus": "Em estoque",
-			"rating": 5,
-			"additional":[],			
-			"optional": false
-		},
-		{
-			"id": "43",
-			"code": "43",
-			"name": "Fritas Média",
-			"image": "35.jpg",
-			"price": 9,
-			"category": "Porções",
-			"quantity": 1,
-			"inventoryStatus": "Em estoque",
-			"rating": 5,
-			"additional":[],			
-			"optional": false
-		},
-		{
-=======
->>>>>>> 0dfb0f5785c6365abf6ecdd2037f1ff05ff10c4f
 			"id": "44",
 			"code": "44",
 			"name": "4 Batata P",
