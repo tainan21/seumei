@@ -412,7 +412,8 @@
 			"category": "Bebidas",
 			"quantity": 1,
 			"inventoryStatus": "Em estoque",
-			"rating": 5,			
+			"rating": 5,
+			"additional": [],			
 			"optional": false
 		},
 		{
@@ -424,7 +425,8 @@
 			"category": "Bebidas",
 			"quantity": 1,
 			"inventoryStatus": "Em estoque",
-			"rating": 5,			
+			"rating": 5,
+			"additional": [],			
 			"optional": false
 		},
 		{
@@ -436,7 +438,8 @@
 			"category": "Bebidas",
 			"quantity": 1,
 			"inventoryStatus": "Em estoque",
-			"rating": 5,			
+			"rating": 5,
+			"additional":[],			
 			"optional": false
 		},
 		{
@@ -448,7 +451,8 @@
 			"category": "Bebidas",
 			"quantity": 1,
 			"inventoryStatus": "Em estoque",
-			"rating": 5,			
+			"rating": 5,
+			"additional":[],			
 			"optional": false
 		},
 		{
@@ -472,7 +476,8 @@
 			"category": "Bebidas",
 			"quantity": 1,
 			"inventoryStatus": "Em estoque",
-			"rating": 5,			
+			"rating": 5,
+			"additional":[],			
 			"optional": false
 		},
 		{
@@ -485,7 +490,8 @@
 			"category": "Sobremesas",
 			"quantity": 1,
 			"inventoryStatus": "Em estoque",
-			"rating": 5,			
+			"rating": 5,
+			"additional":[],			
 			"optional": false
 		},
 		{
@@ -498,7 +504,8 @@
 			"category": "Sobremesas",
 			"quantity": 1,
 			"inventoryStatus": "Em estoque",
-			"rating": 5,			
+			"rating": 5,
+			"additional":[],			
 			"optional": false
 		},
 		{
@@ -511,7 +518,8 @@
 			"category": "Sobremesas",
 			"quantity": 1,
 			"inventoryStatus": "Em estoque",
-			"rating": 5,			
+			"rating": 5,
+			"additional":[],			
 			"optional": false
 		},
 		{
@@ -523,7 +531,8 @@
 			"category": "Porções",
 			"quantity": 1,
 			"inventoryStatus": "Em estoque",
-			"rating": 5,			
+			"rating": 5,
+			"additional":[],			
 			"optional": false
 		},
 		{
@@ -536,7 +545,8 @@
 			"category": "Porções",
 			"quantity": 1,
 			"inventoryStatus": "Em estoque",
-			"rating": 5,			
+			"rating": 5,
+			"additional":[],			
 			"optional": false
 		},
 		{
@@ -549,7 +559,8 @@
 			"category": "Porções",
 			"quantity": 1,
 			"inventoryStatus": "Em estoque",
-			"rating": 5,			
+			"rating": 5,
+			"additional":[],			
 			"optional": false
 		},
 		{
@@ -561,7 +572,8 @@
 			"category": "Porções",
 			"quantity": 1,
 			"inventoryStatus": "Em estoque",
-			"rating": 5,			
+			"rating": 5,
+			"additional":[],			
 			"optional": false
 		},
 		{
@@ -573,7 +585,8 @@
 			"category": "Porções",
 			"quantity": 1,
 			"inventoryStatus": "Em estoque",
-			"rating": 5,			
+			"rating": 5,
+			"additional":[],			
 			"optional": false
 		},
 		{
@@ -585,7 +598,8 @@
 			"category": "Porções",
 			"quantity": 1,
 			"inventoryStatus": "Em estoque",
-			"rating": 5,			
+			"rating": 5,
+			"additional":[],			
 			"optional": false
 		}
 	]
