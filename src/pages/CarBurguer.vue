@@ -9,13 +9,13 @@
               <div v-if="pedidos.length > 0">
                 <div class="md:card lg:card">
                 <div v-for="(pedido, index) in pedidos" :key="pedido.id" class="grid card_product">
-                    <div class="col-12 flex align-items-center justify-content-between mb-0">
+                    <div class="col-12 flex align-items-center justify-content-between mb-0 border-title">
                         <div class="font-bold text-2xl text-black">{{pedido.payload.name}}</div>
-                        <Button icon="pi pi-times" class="p-button-rounded p-button-danger p-button-outlined mr-2 mb-2"  @click="excluir_pedido(index)"/>
+                        <Button style="padding: 0" class="p-button-danger p-button-text " icon="pi pi-times"  @click="excluir_pedido(index)"/>
                     </div>
                     <!-- <img :src="'images/product/' + pedido.payload.image" :alt="pedido.payload.image" class="my-1 w-7 w-7rem shadow-2 mr-3 img-car" /> -->
-                    <div class="flex-1">
-                        <div class="mb-3 legenda">{{pedido.payload.description}}</div>
+                    <div class="flex-1 border-product">
+                        <div class="mb-3 legenda ">{{pedido.payload.description}}</div>
                          <div class="text-left">
                             <div v-if="pedido.payload.additional.length > 0" class="mb-3 legenda">Adicionais:</div>
                         </div>
@@ -274,6 +274,20 @@ import BottomNavigation from "../components/BottomNavigation.vue";
 </script>
 
 <style scoped>
+
+.border-title{
+    border-color: #e8eaed;
+    padding: 10px 0;
+    border-width: 1px;
+    border-bottom-style: dashed;
+}
+.border-product{
+    border-color: #e8eaed;
+    padding: 5px 0 20px 0;
+    margin-bottom: 20px;
+    border-width: 1px;
+    border-bottom-style: solid;
+}
 .spacearound{
     display: flex;
     align-items: center;

@@ -37,10 +37,10 @@ export default {
         }
     },
     components: {
+        FoodBurguer,
         App,
         Landing,
         Product,    
-        FoodBurguer,
         CarBurguer,
         Login,
         Error,
