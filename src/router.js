@@ -8,34 +8,9 @@ const routes = [
         component: () => import('./pages/FoodBurguer.vue')
     },
     {
-        path: '/',
-        name: 'formlayout',
-        component: () => import('./components/FormLayoutDemo.vue')
-    },
-    {
         path: '/dashboard',
         name: 'dashboard',
         component: Dashboard,
-    },
-    {
-        path: '/input',
-        name: 'input',
-        component: () => import('./components/InputDemo.vue')
-    },
-    {
-        path: '/floatlabel',
-        name: 'floatlabel',
-        component: () => import('./components/FloatLabelDemo.vue')
-    },
-    {
-        path: '/invalidstate',
-        name: 'invalidstate',
-        component: () => import('./components/InvalidStateDemo.vue')
-    },
-    {
-        path: '/button',
-        name: 'button',
-        component: () => import('./components/ButtonDemo.vue')
     },
     {
         path: '/shopfriend',
@@ -62,25 +37,11 @@ const routes = [
         name: 'pedidos',
         component: () => import('./components/Car.vue')
     },
+    
     {
-        path: '/tree',
-        name: 'tree',
-        component: () => import('./components/TreeDemo.vue')
-    },
-    {
-        path: '/panel',
-        name: 'panel',
-        component: () => import('./components/PanelsDemo.vue')
-    },
-    {
-        path: '/overlay',
-        name: 'overlay',
-        component: () => import('./components/OverlayDemo.vue')
-    },
-    {
-        path: '/media',
-        name: 'media',
-        component: () => import('./components/MediaDemo.vue')
+        path: '/menuSideBar',
+        name: 'menuSideBar',
+        component: () => import('./components/MenuSideBar.vue')
     },
     {
         path: '/menu',
@@ -103,16 +64,6 @@ const routes = [
                 component: () => import('./components/menu/ConfirmationDemo.vue')
             },
         ],
-    },
-    {
-        path: '/messages',
-        name: 'messages',
-        component: () => import('./components/MessagesDemo.vue')
-    },
-    {
-        path: '/file',
-        name: 'file',
-        component: () => import('./components/FileDemo.vue')
     },
     {
         path: '/chart',
@@ -148,21 +99,6 @@ const routes = [
         path: '/designBebida',
         name: 'designBebida',
         component: () => import('./pages/designBebida.vue')
-    },
-    {
-        path: '/empty',
-        name: 'empty',
-        component: () => import('./components/EmptyPage.vue')
-    },
-    {
-        path: '/documentation',
-        name: 'documentation',
-        component: () => import('./components/Documentation.vue')
-    },
-    {
-        path: '/blocks',
-        name: 'blocks',
-        component: () => import('./components/BlocksDemo.vue')
     },
     {
         path: '/icons',
