@@ -1,5 +1,8 @@
 <template>
-	<div :class="containerClass" @click="onWrapperClick">
+<div>
+    <Pedido />
+
+    	<div v-if="show" :class="containerClass" @click="onWrapperClick">
         <AppTopBar @menu-toggle="onMenuToggle" />
         <div class="layout-sidebar" @click="onSidebarClick">
             <AppMenu :model="menu" @menuitem-click="onMenuItemClick" />
@@ -16,10 +19,12 @@
         <transition name="layout-mask">
             <div class="layout-mask p-component-overlay" v-if="mobileMenuActive"></div>
         </transition>
-	</div>
+	</div> 
+    </div>
 </template>
 
 <script>
+import Pedido from './pages/faça-seu-pedido.vue'
 import AppTopBar from './AppTopbar.vue';
 import AppMenu from './AppMenu.vue';
 import AppConfig from './AppConfig.vue';
@@ -27,8 +32,10 @@ import AppFooter from './AppFooter.vue';
 
 export default {
     emits: ['change-theme'],
+    
     data() {
         return {
+            show: false,
             layoutMode: 'static',
             staticMenuInactive: false,
             overlayMenuActive: false,
@@ -289,6 +296,7 @@ export default {
         'AppMenu': AppMenu,
         'AppConfig': AppConfig,
         'AppFooter': AppFooter,
+        Pedido
     }
 }
 </script>
