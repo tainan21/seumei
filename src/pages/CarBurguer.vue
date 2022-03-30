@@ -57,19 +57,19 @@
                             <span class="p-float-label p-input-icon-left">
                                 <i class="pi pi-user" />
                                 <InputText class="input_formT"  :class="{error: v$.address.$error, success: !v$.address.$error}" v-model="v$.address.$model" id="address"  type="text"/>
-                                <label for="address">Endereço</label>
+                                <label for="address" class="form_text">Endereço</label>
                             </span>
                         </div>
                          <div class="field col-12 md:col-6">
                             <span class="p-float-label p-input-icon-left mt-5">
                                 <i class="pi pi-user" />
                                 <InputText class="input_formT"  :class="{error: v$.city.$error, success: !v$.city.$error}" v-model="v$.city.$model" id="city" type="text" />
-                                <label for="city">Cidade</label>
+                                <label for="city" class="form_text">Cidade</label>
                             </span>
                         </div>
                         <div class="field col-12 md:col-6">
                             <label for="state">Bairro</label>
-                            <Dropdown :class="{error: v$.bairro.$error, success: !v$.bairro.$error}" id="bairro" v-model="bairro" @change="v$.payMoney.$touch()" :options="dropdownItems" optionLabel="name" placeholder="Bairro"></Dropdown>
+                            <Dropdown class="form_text" :class="{error: v$.bairro.$error, success: !v$.bairro.$error}" id="bairro" v-model="bairro" @change="v$.payMoney.$touch()" :options="dropdownItems" optionLabel="name" placeholder="Bairro"></Dropdown>
                             <h6><span class="mr-1 mt-1 legenda" v-if="bairro" >Valor do Frete R$: {{bairro.price}}</span></h6>
                         </div>
                     </div>
