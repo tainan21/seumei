@@ -4,10 +4,13 @@
     :class="isOpened ? 'open' : ''"
     :style="cssVars"
   >
+  
     <div
       class="logo-details"
       style="margin: 6px 14px 0 14px;"
     >
+      <Button icon="bx bx-beer" label="Porções" class="bg-black-custom  button-filter mr-2 mt-2"/>
+
       <img
         v-if="menuLogo"
         :src="menuLogo"
@@ -145,7 +148,7 @@
             link: '#',
             name: 'Dashboard',
             tooltip: 'Dashboard',
-            icon: 'bx-grid-alt',
+            icon: 'bx-beer',
           },
           {
             link: '#',

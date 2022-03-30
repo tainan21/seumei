@@ -74,12 +74,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 lg:col-5 md:col-5 sm:col-12 p-1">
+                <div class="col-12 lg:col-5 md:col-5 sm:col-12 p-3">
                     <div class="grid">
                         <div class="text-center col-12">Forma de Pagamento</div>
                         <div class="col-12 lg:col-12 md:col-12 sm:col-12 flex justify-content-around p-1">
-                            <SelectButton @click="event(payMoney)" :class="{error: v$.payMoney.$error, success: !v$.payMoney.$error}" id="payMoney" v-model="payMoney" @change="v$.payMoney.$touch()" :options="dropdownItemsMoney" optionLabel="name" />
+                            <SelectButton @click="event(payMoney)" :class="{error: v$.payMoney.$error, success: !v$.payMoney.$error}" id="payMoney" v-model="payMoney" @change="v$.payMoney.$touch()" :options="dropdownItemsMoney" optionLabel="name" class="p-1" />
                         </div>
+                        <div class="text-center legenda col-12">Selecione para finalizar a compra!</div>
                         <div class="text-center col-12">                          
                             <div  v-if="payMoney &&  payMoney.name == 'Dinheiro'">
                                 <span class="p-float-label p-input-icon-left">
@@ -98,9 +99,8 @@
             </div>
             <div class="text-center col-12">                          
                 <h6><span class="mr-1 mt-1 legenda">Valor Total R${{totalAdd}}</span></h6>
-                <a v-if="!v$.$invalid" icon="pi pi-whatsapp" class="p-button p-component p-button-rounded p-button-success mr-2 mb-2 text-center" @click="format_text()" :href="url + pedido_txt" >Finalizar pedido</a>
-                <a v-if="v$.$invalid"  icon="pi pi-whatsapp" class="p-button p-component p-button-rounded p-button-success mr-2 mb-2 text-center" @click="format_text()"  >Finalizar pedido</a>
-                
+                <Button v-if="!v$.$invalid" icon="pi pi-whatsapp" label="Finalizar Pedido" name="buttonwpp" class="p-button p-component p-button-rounded p-button-success mr-2 mb-2 text-center" @click="format_text()"/>
+                <Button v-if="v$.$invalid" icon="pi pi-whatsapp" label="Finalizar Pedido" name="buttonwpp" class="p-button p-component p-button-rounded p-button-success mr-2 mb-2 text-center" @click="format_text()"/>
             </div>
         </div>
         <div class="footer-separator"></div>
@@ -274,7 +274,7 @@ import { required } from '@vuelidate/validators'
                     this.payMoney.name == 'Dinheiro'?  this.pedido_txt +="Total a pagar: "+ this.total_pedido() + " Com troco para: " + this.troco + "\n" : null
                     //this.pedido_txt += "total a ser pago: " + this.totalAdd()
                     this.pedido_txt =  window.encodeURIComponent(this.pedido_txt);
-                    
+                    window.location.href= this.url + this.pedido_txt;
                 }
                 else{
                     this.v$.$touch()

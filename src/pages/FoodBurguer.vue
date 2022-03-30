@@ -35,7 +35,7 @@
                     <Button @click="filters.category = 'Sobremesas'" icon="pi pi-moon" label="Sobremesas" class="bg-redLight-custom button-filter mr-2 mt-2"/>
                   </div>
                   <div class="col-12 lg:col-2  sm:col-12 flex justify-content-around">
-                    <Button @click="filters.category = ''" icon="pi pi-moon" label="todos" class="bg-redLight-custom button-filter mr-2 mt-2"/>
+                    <Button @click="filters.category = ''" icon="pi pi-align-left" label="todos" class="bg-redLight-custom button-filter mr-2 mt-2"/>
                   </div>
                   <!--<Button @click="filters.category = 'Todos'" label="Todos" class="p-button-raised p-button-rounde button-filter mr-2 mt-2"/>-->
                 </div>

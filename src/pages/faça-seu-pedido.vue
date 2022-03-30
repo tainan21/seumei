@@ -14,7 +14,7 @@
 		<div class="justify-content-center">
 			<div class="card">
 				<div class="flex justify-content-between flex-wrap card-container purple-container">
-					<div class="flex align-items-center justify-content-center  font-bold  border-round m-2" style="color: rgb(127, 143, 159);"><i class="pi pi-map-marker mr-2 ml-2" style="color: #000" ></i>Galaxia Burguer - Pereiras / Sp</div>
+					<div class="flex align-items-center justify-content-center  font-bold  border-round m-2" style="color: rgb(127, 143, 159);"><i class="pi pi-map-marker mr-2 ml-2" style="color: #000" ></i>Galaxia Burguer - Pereiras / SP</div>
 					<div :class="{'bg-green-500': verify_hour(), 'bg-close': !verify_hour() }" class="flex align-items-center justify-content-center font-bold text-white p-2 border-round m-2">
 						<div  v-if="!verify_hour()"> <i  class="pi pi-fw pi-ban mr-2 ml-2" style="vertical-align: center;"></i>Fechado </div>
             <div  v-if="verify_hour()"> <i  class="pi pi-fw pi-map mr-2 ml-2" style="vertical-align: center;"></i>Aberto </div>
@@ -27,17 +27,16 @@
                 <div class="grid grid-nogutter">
                   <Toast />
                   <div class="col-12 lg:col-4 md:col-6 sm:col-12 flex justify-content-around">
-                    <Button @click="filters.category = 'Lanches'" icon="pi pi-moon" label="Lanches" class="bg-red-custom button-filter mr-2 mt-2"/>
+                    <Button @click="filters.category = 'Lanches'" icon="bx bx-restaurant" label="Lanches" class="bg-red-custom button-filter mr-2 mt-2"/>
                     <Button @click="filters.category = 'Porções'" icon="pi pi-moon" label="Porções" class="bg-black-custom  button-filter mr-2 mt-2"/>
                   </div>
                   <div class="col-12 lg:col-4 md:col-6 sm:col-12 flex justify-content-around">
-                    <Button @click="filters.category = 'Bebidas'" icon="pi pi-moon" label="Bebidas" class="bg-orange-custom button-filter mr-2 mt-2"/>
-                    <Button @click="filters.category = 'Sobremesas'" icon="pi pi-moon" label="Sobremesas" class="bg-redLight-custom button-filter mr-2 mt-2"/>
+                    <Button @click="filters.category = 'Bebidas'" icon="bx bx-beer" label="Bebidas" class="bg-orange-custom button-filter mr-2 mt-2"/>
+                    <Button @click="filters.category = 'Sobremesas'" icon="bx bx-coffee-togo" label="Sobremesas" class="bg-redLight-custom button-filter mr-2 mt-2"/>
                   </div>
                   <div class="col-12 lg:col-2  sm:col-12 flex justify-content-around">
-                    <Button @click="filters.category = ''" icon="pi pi-moon" label="todos" class="bg-cianes-custom button-filter mr-2 mt-2"/>
+                    <Button @click="filters.category = ''" icon="pi pi-align-left" label="todos" class="bg-cianes-custom button-filter mr-2 mt-2"/>
                   </div>
-                  <!--<Button @click="filters.category = 'Todos'" label="Todos" class="p-button-raised p-button-rounde button-filter mr-2 mt-2"/>-->
                 </div>
 							</div>
 							<div class="col-2 text-right">
@@ -358,6 +357,8 @@ export default {
 <style scoped lang="scss">
 @import "../assets/demo/badges.scss";
 @import url("http://fonts.cdnfonts.com/css/gagalin");
+@import url('https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css');
+
 </style>
 <style>
 
