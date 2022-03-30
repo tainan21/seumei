@@ -1,7 +1,6 @@
 <template>
 <div>
     <Pedido />
-
     	<div v-if="show" :class="containerClass" @click="onWrapperClick">
         <AppTopBar @menu-toggle="onMenuToggle" />
         <div class="layout-sidebar" @click="onSidebarClick">
