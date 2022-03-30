@@ -78,14 +78,14 @@
                     <div class="grid">
                         <div class="text-center col-12">Forma de Pagamento</div>
                         <div class="col-12 lg:col-12 md:col-12 sm:col-12 flex justify-content-around p-1">
-                            <SelectButton  :class="{error: v$.payMoney.$error, success: !v$.payMoney.$error}" id="payMoney" v-model="payMoney" @change="v$.payMoney.$touch()" :options="dropdownItemsMoney" optionLabel="name" />
+                            <SelectButton @click="event(payMoney)" :class="{error: v$.payMoney.$error, success: !v$.payMoney.$error}" id="payMoney" v-model="payMoney" @change="v$.payMoney.$touch()" :options="dropdownItemsMoney" optionLabel="name" />
                         </div>
                         <div class="text-center col-12">                          
                             <div  v-if="payMoney &&  payMoney.name == 'Dinheiro'">
                                 <span class="p-float-label p-input-icon-left">
                                     <i class="pi pi-user" />
                                     <h5 class="text-center legenda">De quanto será o troco?</h5>
-                                    <InputText  class="input_formT"   v-model="troco" id="troco" type="text"/>    
+                                    <InputText :class="{error: v$.troco.$error, success: !v$.troco.$error}"  class="input_formT"  @change="v$.troco.$touch()"  v-model="troco" id="troco" type="text"/>    
                                 </span>
                             </div>
                         </div>
@@ -126,7 +126,7 @@ import { required } from '@vuelidate/validators'
                 nomeEmpresa: "Galaxia Burguers",
                 selected: 1,
                 payMoney: null, 
-                troco: null,              
+                troco: 0,              
                 carrinho: [],
                 bairro: null,
                 address: null,
@@ -191,6 +191,7 @@ import { required } from '@vuelidate/validators'
             city :{required},
             bairro: {required},
             payMoney: {required},
+            troco: {required}
 
 
         },
@@ -279,6 +280,11 @@ import { required } from '@vuelidate/validators'
                     this.v$.$touch()
                 }
                  
+            },
+            event(value){
+                if(value.name != 'Dinheiro'){
+                    this.troco = 0
+                }
             },
             teste_getLocalStorage(){
 				const carrinho_salvo = window.localStorage.getItem('carrinho')
