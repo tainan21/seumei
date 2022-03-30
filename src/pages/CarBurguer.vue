@@ -1,7 +1,7 @@
 <template>
 <div class="containerclass" style="background-color: #fff">
     <div class="product">
-        <router-link to="/foodburguer" class="pi pi-fw pi-arrow-right testesicon"></router-link>
+        <router-link to="/faça-seu-pedido" class="pi pi-fw pi-arrow-right testesicon"></router-link>
         <h5 class="productdetail">{{nomeEmpresa}}</h5>
         <Button label="" icon="pi pi-trash" class="p-button p-component p-button-danger m-2"  @click="esvaziar_carrinho()"/>
     </div>
@@ -45,31 +45,31 @@
     		<div class="grid grid-nogutter card">
                 <h5 class="text-center col-12">Informações</h5>
                 <div class="col-12 lg:col-7 md:col-7 sm:col-12 p-1">
-                    <div class="p-fluid  grid">
+                    <div class="p-fluid grid">
                         <div class="field col-12 md:col-12 margin_border">
                             <span class="p-float-label p-input-icon-left">
                                 <i class="pi pi-user" />
-                                <InputText id="nome" type="text" v-model="nome" class="input_formT"/>
-                                <label for="nome" class="form_tex" >Primeiro nome</label>
+                                <InputText class="input_formT" :class="{error: v$.nome.$error, success: !v$.nome.$error}" v-model="nome" @change="v$.nome.$touch()" id="nome" type="text"/>                                                      
+                                <label for="nome" class="form_text">Primeiro nome</label>
                             </span>
                         </div>
-                        <div class="field col-12 mb-3">
-                             <span class="p-float-label p-input-icon-left">
+                        <div class="field col-12">
+                            <span class="p-float-label p-input-icon-left">
                                 <i class="pi pi-user" />
-                                <InputText v-model="address" id="address"  type="text" class="input_formT"/>
-                                <label for="address" class="form_tex" >Endereço</label>
+                                <InputText class="input_formT"  :class="{error: v$.address.$error, success: !v$.address.$error}" v-model="v$.address.$model" id="address"  type="text"/>
+                                <label for="address">Endereço</label>
                             </span>
                         </div>
-                        <div class="field col-12 md:col-6 margin_border">
-                             <span class="p-float-label p-input-icon-left mt-5">
+                         <div class="field col-12 md:col-6">
+                            <span class="p-float-label p-input-icon-left mt-5">
                                 <i class="pi pi-user" />
-                                <InputText v-model="city" id="city" type="text" class="input_formT"/>
-                                <label for="city" class="form_tex" >Cidade</label>
+                                <InputText class="input_formT"  :class="{error: v$.city.$error, success: !v$.city.$error}" v-model="v$.city.$model" id="city" type="text" />
+                                <label for="city">Cidade</label>
                             </span>
                         </div>
-                        <div class="field col-12 md:col-6 margin_border">
-                            <label for="state" class="form_text">Bairro</label>
-                            <Dropdown id="bairro" v-model="bairro" :options="dropdownItems" optionLabel="name" placeholder="Bairro"></Dropdown>
+                        <div class="field col-12 md:col-6">
+                            <label for="state">Bairro</label>
+                            <Dropdown :class="{error: v$.bairro.$error, success: !v$.bairro.$error}" id="bairro" v-model="bairro" @change="v$.payMoney.$touch()" :options="dropdownItems" optionLabel="name" placeholder="Bairro"></Dropdown>
                             <h6><span class="mr-1 mt-1 legenda" v-if="bairro" >Valor do Frete R$: {{bairro.price}}</span></h6>
                         </div>
                     </div>
@@ -78,12 +78,15 @@
                     <div class="grid">
                         <div class="text-center col-12">Forma de Pagamento</div>
                         <div class="col-12 lg:col-12 md:col-12 sm:col-12 flex justify-content-around p-1">
-                            <SelectButton  id="payMoney" v-model="payMoney" :options="dropdownItemsMoney" optionLabel="name" />
+                            <SelectButton  :class="{error: v$.payMoney.$error, success: !v$.payMoney.$error}" id="payMoney" v-model="payMoney" @change="v$.payMoney.$touch()" :options="dropdownItemsMoney" optionLabel="name" />
                         </div>
                         <div class="text-center col-12">                          
                             <div  v-if="payMoney &&  payMoney.name == 'Dinheiro'">
-                                <h5 class="text-center legenda">De quanto será o troco?</h5>
-                                <InputText  v-model="troco" id="troco" type="text"/>    
+                                <span class="p-float-label p-input-icon-left">
+                                    <i class="pi pi-user" />
+                                    <h5 class="text-center legenda">De quanto será o troco?</h5>
+                                    <InputText  class="input_formT"   v-model="troco" id="troco" type="text"/>    
+                                </span>
                             </div>
                         </div>
                         <div class="text-center col-12">                          
@@ -95,7 +98,9 @@
             </div>
             <div class="text-center col-12">                          
                 <h6><span class="mr-1 mt-1 legenda">Valor Total R${{totalAdd}}</span></h6>
-                <a icon="pi pi-whatsapp" class="p-button p-component p-button-rounded p-button-success mr-2 mb-2 text-center" @click="format_text()" :href="url + pedido_txt" >Finalizar pedido</a>
+                <a v-if="!v$.$invalid" icon="pi pi-whatsapp" class="p-button p-component p-button-rounded p-button-success mr-2 mb-2 text-center" @click="format_text()" :href="url + pedido_txt" >Finalizar pedido</a>
+                <a v-if="v$.$invalid"  icon="pi pi-whatsapp" class="p-button p-component p-button-rounded p-button-success mr-2 mb-2 text-center" @click="format_text()"  >Finalizar pedido</a>
+                
             </div>
         </div>
         <div class="footer-separator"></div>
@@ -104,8 +109,15 @@
 
 <script>
 import BottomNavigation from "../components/BottomNavigation.vue";
+import useVuelidate from '@vuelidate/core'
+import { required } from '@vuelidate/validators'
+
+
 
     export default {
+        setup () {
+            return { v$: useVuelidate() }
+        },
         name: "App",
         components: { BottomNavigation },
         data() {
@@ -134,7 +146,7 @@ import BottomNavigation from "../components/BottomNavigation.vue";
                 toggleValue: false,
                 dropdownItem: null,
                 navigation: [{
-                    id: 1, icon: "pi pi-home", title: "Home", path: '../pages/foodburguer', badge: null,
+                    id: 1, icon: "pi pi-home", title: "Home", path: '../pages/faça-seu-pedido', badge: null,
                     },
                     { id: 2, icon: "pi pi-shopping-cart", title: "Carrinho", path: '../pages/carrinho', badge: null },
                 ],
@@ -172,6 +184,17 @@ import BottomNavigation from "../components/BottomNavigation.vue";
                 ],
             }
         },
+        validations:{
+            
+            nome :{required},
+            address :{required},
+            city :{required},
+            bairro: {required},
+            payMoney: {required},
+
+
+        },
+
         created () {},
 		computed: {
             totalnoAdd(){
@@ -220,28 +243,42 @@ import BottomNavigation from "../components/BottomNavigation.vue";
                 currency: "BRL",
               });
             },
+            teste(){
+                if(!this.v$.$invalid){
+                    console.log('entrou')
+                }
+                else{
+                    this.v$.$touch()
+                }
+            },
             format_text() {
-                
-
-                this.pedido_txt += "Olá, me chamo " + this.nome + " Gostaria de fazer o seguinte pedido: \n"
-                this.pedidos.forEach(element => {
-                   
-                    this.pedido_txt += element.payload.name + " - Valor:  R$ " + element.payload.total +"\n"  
-                    element.payload.additional.length > 0?  this.pedido_txt += "Adicional(is): \n"  : null
-                    element.payload.additional.forEach(add =>{
-                         this.pedido_txt += add.name + "\n"
-                    })
-                    this.pedido_txt += "----------------------- \n\n"  
-                });
-                this.pedido_txt += "frete: R$ " + this.bairro.price + "\n"                               
-                this.pedido_txt += "O pedido irá para o seguinte endereço: " + this.address +  ",\n"
-                this.pedido_txt += "Cidade: " + this.city + ",\n"
-                this.pedido_txt += "bairro: "+ this.bairro.name + "\n"
-                this.pedido_txt += "O metodo de pagamento será: " + this.payMoney.name + "\n"                 
-                this.payMoney.name == 'Dinheiro'?  this.pedido_txt +="Total a pagar: "+ this.total_pedido() + " Com troco para: " + this.troco + "\n" : null
-                //this.pedido_txt += "total a ser pago: " + this.totalAdd()
-                this.pedido_txt =  window.encodeURIComponent(this.pedido_txt);
-                
+                                               
+                if(!this.v$.$invalid){
+                                  
+                    this.pedido_txt += "Olá, me chamo " + this.nome + " Gostaria de fazer o seguinte pedido: \n"
+                    this.pedidos.forEach(element => {
+                    
+                        this.pedido_txt += element.payload.name + " - Valor:  R$ " + element.payload.total +"\n"  
+                        element.payload.additional.length > 0?  this.pedido_txt += "Adicional(is): \n"  : null
+                        element.payload.additional.forEach(add =>{
+                             this.pedido_txt += add.name + "\n"
+                        })
+                        this.pedido_txt += "----------------------- \n\n"  
+                    });
+                    this.pedido_txt += "frete: R$ " + this.bairro.price + "\n"                               
+                    this.pedido_txt += "O pedido irá para o seguinte endereço: " + this.address +  ",\n"
+                    this.pedido_txt += "Cidade: " + this.city + ",\n"
+                    this.pedido_txt += "bairro: "+ this.bairro.name + "\n"
+                    this.pedido_txt += "O metodo de pagamento será: " + this.payMoney.name + "\n"                 
+                    this.payMoney.name == 'Dinheiro'?  this.pedido_txt +="Total a pagar: "+ this.total_pedido() + " Com troco para: " + this.troco + "\n" : null
+                    //this.pedido_txt += "total a ser pago: " + this.totalAdd()
+                    this.pedido_txt =  window.encodeURIComponent(this.pedido_txt);
+                    
+                }
+                else{
+                    this.v$.$touch()
+                }
+                 
             },
             teste_getLocalStorage(){
 				const carrinho_salvo = window.localStorage.getItem('carrinho')
@@ -302,10 +339,9 @@ import BottomNavigation from "../components/BottomNavigation.vue";
 </script>
 
 <style scoped>
-
-.margin_border{
-    margin-bottom: 30px;
- }
+.error{
+    border-color: red!important;
+}
 .border-title{
     border-color: #e8eaed;
     padding: 10px 0;
@@ -526,3 +562,4 @@ input:-internal-autofill-selected {
     color: #fefdf9 !important;
 }
 </style>
+

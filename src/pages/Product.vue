@@ -4,7 +4,7 @@
 <div class="containerclass">
   <div id="btn-app">
         <div class="product">
-            <router-link to="/foodburguer" class="pi pi-fw pi-arrow-right testesicon"></router-link>
+            <router-link to="/faça-seu-pedido" class="pi pi-fw pi-arrow-right testesicon"></router-link>
             <h5 class="productdetail">Detalhes do produto</h5>
         </div>
         <img :src="'images/product/' + product_[0].payload.image" alt="teste" style="order-radius: 4px; margin-bottom: 20px; object-fit: cover; width: 100%" class="shadow-2 my-3 mx-0 product_image" styleClass="product_image" imageStyle="product_image" containerStyle="width: 640px" width="100" preview/>
@@ -68,7 +68,7 @@ export default {
     product_: null,
     selected: 1 ,
     options: [{
-	    id: 1, icon: "pi pi-home", title: "Home", path: '../pages/foodburguer', badge: null,
+	    id: 1, icon: "pi pi-home", title: "Home", path: '../pages/faça-seu-pedido', badge: null,
      },
 		{ id: 2, icon: "pi pi-shopping-cart", title: "Carrinho", path: '../pages/carrinho', badge: null },
 	],
