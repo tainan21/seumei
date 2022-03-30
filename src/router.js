@@ -3,9 +3,9 @@ import Dashboard from './components/Dashboard.vue';
 
 const routes = [
     {
-        path: '/foodburguer',
+        path: '/faça-seu-pedido',
         name: 'faça seu pedido',
-        component: () => import('./pages/FoodBurguer.vue')
+        component: () => import('./pages/faça-seu-pedido.vue')
     },
     {
         path: '/dashboard',
@@ -37,7 +37,6 @@ const routes = [
         name: 'pedidos',
         component: () => import('./components/Car.vue')
     },
-    
     {
         path: '/menuSideBar',
         name: 'menuSideBar',

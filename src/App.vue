@@ -40,6 +40,22 @@ export default {
                         label: 'Painel de Controle', icon: 'pi pi-fw pi-home', to: '/dashboard'
                     }]
                 },
+				{
+					label: 'Páginas', icon: 'pi pi-fw pi-clone',
+					items: [
+						{label: 'Cadastro', icon: 'pi pi-fw pi-user-edit', to: '/crud'},
+						{label: 'Linha do tempo', icon: 'pi pi-fw pi-calendar', to: '/timeline'},
+                        {label: 'Landing', icon: 'pi pi-fw pi-globe', to: '/landing'},
+                        {label: 'Faça Seu Pedido', icon: 'pi pi-fw pi-heart-fill', to: '/faça-seu-pedido'},
+                        {label: 'Product', icon: 'pi pi-fw pi-heart-fill', to: '/product'},
+                        {label: 'carrinho', icon: 'pi pi-fw pi-shopping-cart', to: '/carrinho'},
+                        {label: 'Login', icon: 'pi pi-fw pi-sign-in', to: '/login'},
+                 /*        {label: 'Error', icon: 'pi pi-fw pi-times-circle', to: '/error'},
+                        {label: 'Sem acesso', icon: 'pi pi-fw pi-exclamation-circle', to: '/notfound'},
+                        {label: 'Accesso', icon: 'pi pi-fw pi-lock', to: '/access'},
+						{label: 'Vázio', icon: 'pi pi-fw pi-circle-off', to: '/empty'},*/
+					]
+				},
                 {
 					label: 'Relatórios', icon: 'pi pi-fw pi-chart-bar',
 					items: [
@@ -111,22 +127,6 @@ export default {
 					items: [
                         {label: 'Disparo para clientes', icon: 'pi pi-fw pi-chart-bar', to: '/chart'},
                         {label: 'Idiomas', icon: 'pi pi-fw pi-circle-off', to: '/misc'},
-					]
-				},
-				{
-					label: 'Páginas', icon: 'pi pi-fw pi-clone',
-					items: [
-						{label: 'Cadastro', icon: 'pi pi-fw pi-user-edit', to: '/crud'},
-						{label: 'Linha do tempo', icon: 'pi pi-fw pi-calendar', to: '/timeline'},
-                        {label: 'Landing', icon: 'pi pi-fw pi-globe', to: '/landing'},
-                        {label: 'FoodBurguer', icon: 'pi pi-fw pi-heart-fill', to: '/foodburguer'},
-                        {label: 'Product', icon: 'pi pi-fw pi-heart-fill', to: '/product'},
-                        {label: 'carrinho', icon: 'pi pi-fw pi-shopping-cart', to: '/carrinho'},
-                        {label: 'Login', icon: 'pi pi-fw pi-sign-in', to: '/login'},
-                 /*        {label: 'Error', icon: 'pi pi-fw pi-times-circle', to: '/error'},
-                        {label: 'Sem acesso', icon: 'pi pi-fw pi-exclamation-circle', to: '/notfound'},
-                        {label: 'Accesso', icon: 'pi pi-fw pi-lock', to: '/access'},
-						{label: 'Vázio', icon: 'pi pi-fw pi-circle-off', to: '/empty'},*/
 					]
 				},
             /*     {

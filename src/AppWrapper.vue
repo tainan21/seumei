@@ -1,7 +1,7 @@
 <template>
     <Landing v-if="$route.path === '/landing'" @change-theme="changeTheme" />
     <Login v-else-if="$route.path === '/login'" />
-    <FoodBurguer v-else-if="$route.path === '/foodburguer'"  />
+    <FacaSeuPedido v-else-if="$route.path === '/faça-seu-pedido'"  />
     <DesignCoffe v-else-if="$route.path === '/designCoffe'"  />
     <CarBurguer v-else-if="$route.path === '/carrinho'"  />
     <Product v-else-if="$route.path === '/product'"  />
@@ -15,7 +15,7 @@
 import EventBus from './AppEventBus';
 import App from './App';
 import Landing from './pages/LandingDemo';
-import FoodBurguer from './pages/FoodBurguer';
+import FacaSeuPedido from './pages/faça-seu-pedido';
 import DesignCoffe from './pages/designCoffe';
 import Product from './pages/Product';
 import CarBurguer from './pages/CarBurguer';
@@ -39,7 +39,7 @@ export default {
         }
     },
     components: {
-        FoodBurguer,
+        FacaSeuPedido,
         App,
         Landing,
         Product,    

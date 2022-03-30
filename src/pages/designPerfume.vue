@@ -1,368 +1,487 @@
-<template>
-  <v-app style="background-color= rgba(0,0,0,0)">
-    <RightSideBar />
-    <v-container>
-      <v-toolbar flat color="rgba(0,0,0,0)">
-        <v-btn
-          icon
-          dark
-          class="d-lg-none d-xl-flex"
-          @click.stop="drawer = !drawer"
-        >
-          <v-icon>mdi-menu</v-icon>
-        </v-btn>
-        <v-spacer></v-spacer>
-        <v-text-field
-          label="Search on maufarm"
-          class="pt-5 d-none d-sm-flex"
-          dark
-          filled
-          prepend-inner-icon="mdi-magnify"
-          solo
-          flat
-          background-color="transparent"
-          rounded
-          outlined
-        ></v-text-field>
-        <v-spacer></v-spacer>
-        <v-btn dark class="mr-2">
-          <v-icon left>fas fa-filter</v-icon>
-          Filtre
-        </v-btn>
-        <v-btn dark class="mr-2">
-          <v-icon left>fas fa-upload</v-icon>
-          Export
-        </v-btn>
-      </v-toolbar>
-      <h1 class="white--text">SALES</h1>
-      <p class="grey--text">
-        A Great Way To Generate All The Motivation You Need To Get Fit
-      </p>
-      <v-app-bar dark color="rgba(0,0,0,0)" flat class="">
-        <v-tabs color="#6F0DFF">
-          <v-tabs-slider color="#6F0DFF"></v-tabs-slider>
+<template id="vue-base-input">
+      <div>
+      <input v-model="modelValue"
+        v-bind="$attrs"
+        :class="[
+          labelInside ? 'input-label-inside' : 'input-label-outside',
+          'input',
+        ]"
+        :placeholder="$attrs.placeholder ? $attrs.placeholder : ' '"
+        :type="showPassword ? 'text' : inputType"
+      />
+      <button
+        v-if="
+          getIconCheck &&
+          isValidate === false &&
+          getValueLength >= 1 &&
+          showIcon
+        "
+        @click.prevent="showErrorMessage = !showErrorMessage"
+        :class="[
+          returnValueByLength(
+            getValueLength,
+            customStyle.inputBgFull,
+            customStyle.inputBgEmpty,
+            1
+          ),
+          'button-icon',
+        ]"
+        type="button"
+      >
+      </button>
+      <div
+        v-if="
+          getIconCheck &&
+          isValidate !== false &&
+          getValueLength >= 1 &&
+          showIcon
+        "
+        :class="[
+          returnValueByLength(
+            getValueLength,
+            customStyle.inputBgFull,
+            customStyle.inputBgEmpty,
+            1
+          ),
+          'button-icon',
+        ]"
+      >
+        <img :src="getIconCheck.src" :alt="getIconCheck.alt" />
+      </div>
 
-          <v-tab class="withoutupercase">Fultillment Status View</v-tab>
-          <v-tab class="withoutupercase">Real-time Trackning</v-tab>
-          <v-tab class="withoutupercase">Sales View</v-tab>
-          <v-tab class="withoutupercase">Balances</v-tab>
-          <v-tab class="withoutupercase">Transactions</v-tab>
-          <v-tab class="withoutupercase">Engagement Rate</v-tab>
-        </v-tabs>
-        <v-spacer></v-spacer>
-        <v-btn dark text class="d-none d-sm-flex">
-          <v-icon left>mdi-magnify</v-icon>
-          SEARCH
-        </v-btn>
-        <v-btn rounded color="white" class="black--text">
-          List
-          <v-icon right>mdi-format-list-bulleted</v-icon>
-        </v-btn>
-        <v-btn icon>
-          <v-icon>mdi-apps</v-icon>
-        </v-btn>
-      </v-app-bar>
-      <v-divider color="grey"></v-divider>
-      <v-toolbar flat color="rgba(0,0,0,0)">
-        <v-divider vertical color="green" inset></v-divider>
-        <v-toolbar-title class="white--text ml-4">Alert</v-toolbar-title>
-        <v-spacer></v-spacer>
-        <v-chip
-          class="ma-1 d-none d-sm-flex"
-          color=""
-          label
-          text-color="white"
-          dark
+      <div
+        :class="[
+          returnValueByLength(
+            getValueLength,
+            customStyle.inputBgFull,
+            customStyle.inputBgEmpty,
+            1
+          ),
+          'bloc-button',
+        ]"
+      >
+        <button
+          v-if="getIconEyes && showIconPassword && inputType === 'password'"
+          @click.prevent="showPassword = !showPassword"
+          class="button-icon"
+          type="button"
         >
-          <v-avatar color="white" rounded class="mr-2">
-            <v-img src="1.png" contain></v-img>
-          </v-avatar>
-          Nike new golf
-        </v-chip>
-        <v-chip
-          class="ma-1 d-none d-sm-flex"
-          color=""
-          label
-          text-color="white"
-          dark
+          <img :src="getIconEyes" alt="" />
+        </button>
+        <div v-if="icon" class="button-icon">
+          <img :src="icon.src" :alt="icon.alt" />
+        </div>
+      </div>
+      <label
+        v-if="$attrs.label && !$attrs.placeholder"
+        :for="$attrs.name"
+        :class="[
+          labelInside ? 'label-inside' : 'label-outside',
+          customStyle.label,
+        ]"
+      >
+        {{ $attrs.label }}
+        <span v-if="isRequired" class="required">*</span>
+      </label>
+    <div class="bloc-error">
+      <transition name="fade">
+        <p
+          v-if="showErrorMessage && isValidate === false && errorMessage"
+          :class="[customStyle.errorMessage, 'error-message']"
         >
-          <v-avatar color="white" rounded class="mr-2">
-            <v-img src="2.png" contain></v-img>
-          </v-avatar>
-
-          Sneakers printemps
-        </v-chip>
-        <v-spacer></v-spacer>
-        <v-btn dark class="mr-2 withoutupercase d-none d-sm-flex">
-          See All (10)
-        </v-btn>
-        <v-btn dark class="mr-2" outlined>
-          <v-icon left>mdi-chevron-left</v-icon>
-          <v-icon right>mdi-chevron-right</v-icon>
-        </v-btn>
-      </v-toolbar>
-      <v-row class="mt-n14">
-        <v-col
-          cols="12"
-          xs="12"
-          sm="6"
-          md="4"
-          lg="3"
-          v-for="(shoe, i) in shoes"
-          :key="i"
-        >
-          <v-card
-            class="mx-auto my-12 rounded-xl"
-            max-width="374"
-            color="#151515"
-          >
-            <v-img height="170" :src="shoe.image"></v-img>
-            <v-toolbar color="transparent" class="mt-n7" flat>
-              <v-avatar color="white" rounded class="mr-2">
-                <v-img :src="shoe.pic" contain></v-img>
-              </v-avatar>
-              <v-spacer></v-spacer>
-              <v-avatar color="black" rounded class="mr-2" dark>
-                <div class="three">
-                  <div class="four">
-                    <span class="white--text caption">{{ shoe.price }}</span>
-                  </div>
-                  <div class="five">
-                    <span class="green--text caption">HOLD</span>
-                  </div>
-                </div>
-              </v-avatar>
-            </v-toolbar>
-            <v-card-title class="grey--text caption">{{
-              shoe.id
-            }}</v-card-title>
-            <v-card-title class="grey--text text-grey-darken-1 caption mt-n6">{{
-              shoe.date
-            }}</v-card-title>
-            <v-card-text class="white--text text-grey-darken-1 mt-n2">{{
-              shoe.marque
-            }}</v-card-text>
-
-            <v-card-text class="mt-n4">
-              <v-chip-group
-                active-class="deep-purple accent-4 white--text"
-                column
-              >
-                <v-chip label dark>{{ shoe.pay1 }}</v-chip>
-                <v-chip label dark>{{ shoe.pay2 }}</v-chip>
-                <v-spacer></v-spacer>
-                <v-avatar size="40">
-                  <v-img :src="shoe.avatar"></v-img>
-                </v-avatar>
-              </v-chip-group>
-            </v-card-text>
-          </v-card>
-        </v-col>
-      </v-row>
-      <v-toolbar flat color="rgba(0,0,0,0) " class="mt-n14">
-        <v-divider vertical color="orange" inset></v-divider>
-        <v-toolbar-title class="white--text ml-4"
-          >Recent Orders</v-toolbar-title
-        >
-        <v-spacer></v-spacer>
-        <v-chip
-          class="ma-1 d-none d-sm-flex"
-          color=""
-          label
-          text-color="white"
-          dark
-        >
-          <v-avatar color="white" rounded class="mr-2">
-            <v-img src="2.png" contain></v-img>
-          </v-avatar>
-          Nike new
-        </v-chip>
-        <v-chip
-          class="ma-1 d-none d-sm-flex"
-          color=""
-          label
-          text-color="white"
-          dark
-        >
-          <v-avatar color="white" rounded class="mr-2">
-            <v-img src="3.png" contain></v-img>
-          </v-avatar>
-
-          Zoom JO
-        </v-chip>
-        <v-chip
-          class="ma-1 d-none d-sm-flex"
-          color=""
-          label
-          text-color="white"
-          dark
-        >
-          <v-avatar color="white" rounded class="mr-2">
-            <v-img src="4.png" contain></v-img>
-          </v-avatar>
-
-          Jordon BZ
-        </v-chip>
-        <v-spacer></v-spacer>
-        <v-btn dark class="mr-2 withoutupercase d-none d-sm-flex">
-          See All (129)
-        </v-btn>
-        <v-btn dark class="mr-2" outlined>
-          <v-icon left>mdi-chevron-left</v-icon>
-          <v-icon right>mdi-chevron-right</v-icon>
-        </v-btn>
-      </v-toolbar>
-      <v-row class="mt-n10">
-        <v-col
-          cols="12"
-          xs="12"
-          sm="6"
-          md="3"
-          v-for="(order, i) in orders"
-          :key="i"
-        >
-          <v-card
-            class="mx-auto my-12 rounded-lg"
-            max-width="374"
-            color="#151515"
-          >
-            <v-toolbar color="transparent" class="mt-n6" flat>
-              <v-avatar color="white" rounded class="mr-2">
-                <v-img :src="order.pic" contain></v-img>
-              </v-avatar>
-              <v-spacer></v-spacer>
-              <v-avatar color="black" rounded class="mr-2" dark>
-                <div class="three">
-                  <div class="four">
-                    <span class="white--text caption">{{ order.price }}</span>
-                  </div>
-                  <div class="six">
-                    <span class="orange--text caption">HOLD</span>
-                  </div>
-                </div>
-              </v-avatar>
-            </v-toolbar>
-          </v-card>
-        </v-col>
-      </v-row>
-    </v-container>
-  </v-app>
-</template>
-
+          {{ errorMessage }}
+        </p>
+      </transition>
+    </div>
+  </div>
+</template>     
 <script>
-import RightSideBar from "../components/RightSideBar.vue";
-
 export default {
-  name: "Home",
-  data: () => ({
-    selection: 1,
-    drawer: true,
-    shoes: [
-      {
-        image: "3.jpg",
-        pic: "1.png",
-        price: "$465",
-        id: "ID: CK1911159967352",
-        date: "02.12.2021, 3:34 AM",
-        marque: "Nike Air MAx",
-        pay1: "LUXEMBURG",
-        pay2: "ITALY",
-        avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
-      },
-      {
-        image: "9.jfif",
-        pic: "2.png",
-        price: "$714",
-        id: "ID: CK1911159967621",
-        date: "02.12.2021, 4:12 AM",
-        marque: "AIR Jordon",
-        pay1: "FUTURE",
-        pay2: "WAR",
-        avatar: "https://cdn.vuetifyjs.com/images/lists/2.jpg",
-      },
-      {
-        image: "8.jpg",
-        pic: "3.png",
-        price: "$982",
-        id: "ID: CK1911159967532",
-        date: "02.12.2021, 6:24 AM",
-        marque: "Adidas GR",
-        pay1: "LONDON",
-        pay2: "ALGERIA",
-        avatar: "https://cdn.vuetifyjs.com/images/lists/3.jpg",
-      },
-      {
-        image: "7.jpg",
-        pic: "4.png",
-        price: "$394",
-        id: "ID: CK1911159968663",
-        date: "02.12.2021, 7:51 AM",
-        marque: "Puma New",
-        pay1: "SRILANKA",
-        pay2: "PALAU",
-        avatar: "https://cdn.vuetifyjs.com/images/lists/4.jpg",
-      },
-    ],
-    orders: [
-      {
-        pic: "5.png",
-        price: "$465",
-      },
-      {
-        pic: "6.png",
-        price: "$714",
-      },
-      {
-        pic: "7.png",
-        price: "$982",
-      },
-      {
-        pic: "8.png",
-        price: "$394",
-      },
-    ],
-  }),
-  components: {
-    RightSideBar,
+  name: 'vue-base-input',
+  model: {
+    prop: 'title',
+    event: 'change',
   },
-  methods: {},
+  props: {
+    value: {
+      type: String,
+    },
+    isValid: {
+      type: Boolean,
+      default: null,
+    },
+    inputType: {
+      type: String,
+      default: 'text',
+    },
+    inputClass: {
+      type: String,
+      default: '',
+    },
+    isRequired: {
+      type: Boolean,
+      default: false,
+    },
+    showBorder: {
+      type: Boolean,
+      default: true,
+    },
+    showIcon: {
+      type: Boolean,
+      default: true,
+    },
+    showIconPassword: {
+      type: Boolean,
+      default: true,
+    },
+    errorMessage: {
+      type: String,
+      default: '',
+    },
+    icon: {
+      type: [Object, String],
+      default: null,
+    },
+    urlIconValid: {
+      type: [Object, String],
+      default: null,
+    },
+    urlIconFaild: {
+      type: [Object, String],
+      default: null,
+    },
+    urlIconOpenEyes: {
+      type: [Object, String],
+      default: null,
+    },
+    urlIconCloseEyes: {
+      type: [Object, String],
+      default: null,
+    },
+    regex: {
+      type: [Object, String],
+      default: null,
+      example:
+        '^(?=.*[A-Za-z])(?=.*)(?=.*[@$!%*#?&])[A-Za-z@$!%*#?&]{10,}$',
+    },
+    labelInside: {
+      type: Boolean,
+      default: false,
+    },
+    customStyle: {
+      type: Object,
+      default() {
+        return {
+          borderIsValid: 'border-valid',
+          borderIsDefault: 'border-default',
+          borderIsBad: 'border-faild',
+          errorMessage: 'error-color',
+          label: 'label-color',
+          inputBgFull: 'bg-full',
+          inputBgEmpty: 'bg-empty',
+        };
+      },
+    },
+  },
+  computed: {
+    getValueLength() {
+      return this.modelValue !== '' && this.modelValue !== null
+        ? this.modelValue?.length
+        : '';
+    },
+    getIconCheck() {
+      if (this.isValidate === false) {
+        return this.urlIconFaild;
+      } else {
+        return this.urlIconValid;
+      }
+    },
+    getIconEyes() {
+      if (this.showPassword) {
+        return this.urlIconOpenEyes;
+      } else {
+        return this.urlIconCloseEyes;
+      }
+    },
+    classBorder() {
+      return this.isValidate &&
+        this.showBorder &&
+        this.returnValueByLength(this.getValueLength, true, false, 1)
+        ? this.customStyle.borderIsValid
+        : this.isValidate === false
+        ? this.customStyle.borderIsBad
+        : this.customStyle.borderIsDefault;
+    },
+  },
+  mounted() {
+    if (this.getValueLength > 1) {
+      this.update(this.modelValue);
+    }
+  },
+  watch: {
+    modelValue(value) {
+      this.update(value);
+    },
+    regex() {
+      this.update(this.modelValue);
+    },
+  },
+  data() {
+    return {
+      modelValue: this.value,
+      isValidate: this.isValid,
+      showErrorMessage: false,
+      showPassword: false,
+    };
+  },
+  methods: {
+    callUpdateIsValid(val) {
+      this.isValidate = val;
+      if (!val) {
+        this.showErrorMessage = true;
+      }
+    },
+    callResetValue() {
+      this.modelValue = '';
+      this.update('');
+    },
+    returnValueByLength(value, correct, incorrect, number) {
+      return value >= number ? correct : incorrect;
+    },
+    testRegex(value) {
+      if (this.regex !== null && this.regex !== '') {
+        const regex = new RegExp(this.regex);
+        return regex.test(value);
+      } else {
+        return true;
+      }
+    },
+    update(value) {
+      if (this.isRequired && this.testRegex(value) && value.length >= 1) {
+        this.isValidate = true;
+      } else if (
+        this.isRequired &&
+        !this.testRegex(value) &&
+        value.length >= 1
+      ) {
+        this.isValidate = false;
+        this.showErrorMessage = true;
+      } else if (!this.isRequired && value.length >= 1) {
+        this.isValidate = true;
+        this.showErrorMessage = false;
+      } else {
+        this.isValidate = null;
+        this.showErrorMessage = false;
+      }
+      this.$emit('update:value', value);
+      this.$emit('update:isValid', this.isValidate);
+    },
+  },
 };
 </script>
+
 <style scoped>
-.v-tab.withoutupercase {
-  text-transform: none !important;
-}
-.v-tabs {
-  width: 50% !important;
-}
-.v-btn.withoutupercase {
-  text-transform: none !important;
-}
-/*div{
-  display:inline-block;
-  float:left;
-  color:#fff;
-  font-size:10px;
-}*/
-
-.three {
-  width: 50px;
-  height: 50px;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
 }
 
-.four {
-  width: 50px;
-  height: 25px;
-  background: black;
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
-.five {
-  width: 50px;
-  height: 25px;
-  background: #042a0f;
+
+.base-input {
+  border-radius: 0.37rem;
+  position: relative;
+  border-width: 2px;
 }
-.six {
-  width: 50px;
-  height: 25px;
-  background: #2c2107;
+
+.base-input input:focus {
+  outline-style: none;
+  box-shadow: none;
+  border-color: transparent;
 }
+.base-input input:-webkit-autofill,
+.base-input input:-webkit-autofill:hover,
+.base-input input:-webkit-autofill:focus {
+  border: none;
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.border-valid {
+  border: solid 2px rgb(34, 197, 94);
+}
+.border-default {
+  border: solid 2px rgb(229, 231, 235);
+}
+.border-faild {
+  border: solid 2px rgb(239, 68, 68);
+}
+.error-color {
+  color: rgb(185, 28, 28);
+}
+.label-color {
+  color: rgb(107, 114, 128);
+}
+.bg-full {
+  border-radius: 0.37rem;
+  background-color: rgb(249, 250, 251);
+}
+.bg-empty {
+  border-radius: 0.37rem;
+  background-color: rgb(243, 244, 246);
+}
+
+.bloc-input {
+  position: relative;
+  z-index: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.input {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width: 100%;
+  appearance: none;
+  border-width: 0px;
+  background-color: transparent;
+  padding-left: 0.5rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  box-shadow: 0, 0, #0000;
+}
+
+/* input label inside true */
+.input-label-inside {
+  padding-top: 1.25rem;
+  padding-bottom: 0.25rem;
+}
+/* input label outside true */
+.input-label-outside {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.bloc-button {
+  display: flex;
+}
+
+.button-icon {
+  margin-right: 0.5rem;
+  display: flex;
+  width: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+.button-icon img {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.label-outside {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0.5rem;
+  z-index: -1;
+  display: flex;
+  transform: none;
+  align-items: center;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  transition-duration: 300ms;
+}
+@media (min-width: 768px) {
+  .label-outside {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+}
+
+.label-inside {
+  position: absolute;
+  top: 0.25rem;
+  bottom: 0px;
+  left: 0.5rem;
+  z-index: -1;
+  display: flex;
+  transform: none;
+  align-items: center;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  transition-duration: 300ms;
+}
+
+@media (min-width: 768px) {
+  .label-inside {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+}
+
+.required {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+
+.bloc-error {
+  position: absolute;
+}
+
+.bloc-error .error-message {
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+@media (min-width: 768px) {
+  .bloc-error .error-message {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+}
+
+
+/* animation label inside/outside*/
+
+input:not(:-moz-placeholder-shown) ~ label.label-inside {
+  top: 0.25rem;
+  bottom: auto;
+  transform: translateX(0) translateY(0) rotate(0) skewX(0) skewY(0) scaleX(1) scaleY(1);
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+input:not(:-ms-input-placeholder) ~ label.label-inside {
+  top: 0.25rem;
+  bottom: auto;
+  transform: translateX(0) translateY(0) rotate(0) skewX(0) skewY(0) scaleX(1) scaleY(1);
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+input:focus-within ~ label.label-inside, input:not(:placeholder-shown) ~ label.label-inside {
+  top: 0.25rem;
+  bottom: auto;
+  transform: translateX(0) translateY(0) rotate(0) skewX(0) skewY(0) scaleX(1) scaleY(1);
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+input:not(:-moz-placeholder-shown) ~ label.label-outside {
+  transform: translateX(-0.5rem) translateY(-2.25rem) rotate(0) skewX(0) skewY(0) scaleX(1) scaleY(1);
+}
+
+input:not(:-ms-input-placeholder) ~ label.label-outside {
+  transform: translateX(-0.5rem) translateY(-2.25rem) rotate(0) skewX(0) skewY(0) scaleX(1) scaleY(1);
+}
+
+input:focus-within ~ label.label-outside, input:not(:placeholder-shown) ~ label.label-outside {
+  transform: translateX(-0.5rem) translateY(-2.25rem) rotate(0) skewX(0) skewY(0) scaleX(1) scaleY(1);
+}
+
 </style>
