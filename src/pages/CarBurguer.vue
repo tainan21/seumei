@@ -547,7 +547,7 @@ import { required } from '@vuelidate/validators'
     border: none;
     background: transparent;
     border-bottom: 1px solid rgba(5,5,5, 0.5);
-    color: #fefdf9;
+    color: rgba(5,5,5, 0.5);;
 }
 input:-webkit-autofill,
 textarea:-webkit-autofill,

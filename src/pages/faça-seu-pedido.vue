@@ -137,16 +137,7 @@ export default {
     value: null
   },
   order_by: null,
-  order_type: null,
-		sortOptions: [
-		{ label: "Todos", value: "price" },
-    { label: "Preço mais Alto", value: "!price" },
-		{ label: "Preço mais Baixo", value: "price" },
-		{ label: "Lanches da Casa", value: "!category" },
-		{ label: "Tradicionais", value: "!category" },
-	],
-	};
-	},
+  order_type: null,};},
   productService: null,
   computed: {
     totalAdd() {
@@ -227,9 +218,6 @@ export default {
        this.dataviewValue = data 
        this.organize_obj()
        });
-
-   
-      
   },
   mounted() {
     this.teste_getLocalStorage(false);
