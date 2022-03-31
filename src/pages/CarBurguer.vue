@@ -256,7 +256,7 @@ import { required } from '@vuelidate/validators'
                                                
                 if(!this.v$.$invalid){
                                   
-                    this.pedido_txt += "Olá, me chamo " + this.nome + " Gostaria de fazer o seguinte pedido: \n"
+                    this.pedido_txt += "Olá, me chamo " + this.nome + " \n Gostaria de fazer o seguinte pedido: \n"
                     this.pedidos.forEach(element => {
                     
                         this.pedido_txt += element.payload.name + " - Valor:  R$ " + element.payload.total +"\n"  
@@ -270,9 +270,10 @@ import { required } from '@vuelidate/validators'
                     this.pedido_txt += "O pedido irá para o seguinte endereço: " + this.address +  ",\n"
                     this.pedido_txt += "Cidade: " + this.city + ",\n"
                     this.pedido_txt += "bairro: "+ this.bairro.name + "\n"
-                    this.pedido_txt += "O metodo de pagamento será: " + this.payMoney.name + "\n"                 
+                    this.pedido_txt += "O metodo de pagamento será: " + this.payMoney.name + "\n"     
+                    this.pedido_txt += "O valor total será: " + this.total + "\n"                 
                     this.payMoney.name == 'Dinheiro'?  this.pedido_txt +="Total a pagar: "+ this.total_pedido() + " Com troco para: " + this.troco + "\n" : null
-                    //this.pedido_txt += "total a ser pago: " + this.totalAdd()
+                    this.pedido_txt += "total a ser pago: " + this.total_pedido()
                     this.pedido_txt =  window.encodeURIComponent(this.pedido_txt);
                     window.location.href= this.url + this.pedido_txt;
                 }
