@@ -28,6 +28,7 @@
                   <Toast />
                   <div class="col-12 lg:col-4 md:col-6 sm:col-12 flex justify-content-around">
                     <Button @click="filters.category = 'Lanches'" icon="bx bx-restaurant" label="Lanches" class="bg-red-custom button-filter mr-2 mt-2"/>
+                     <Button @click="filters.category = 'Tradicional'" icon="bx bx-restaurant" label="Tradicional" class="bg-red-custom button-filter mr-2 mt-2"/>
                     <Button @click="filters.category = 'Porções'" icon="pi pi-moon" label="Porções" class="bg-black-custom  button-filter mr-2 mt-2"/>
                   </div>
                   <div class="col-12 lg:col-4 md:col-6 sm:col-12 flex justify-content-around">
@@ -135,8 +136,8 @@ export default {
   option_sort:{
     value: null
   },
-  order_by: null,
-  order_type: null,};},
+  order_by: 'price',
+  order_type: 1,};},
   productService: null,
   computed: {
     totalAdd() {
@@ -198,8 +199,9 @@ export default {
       return this.sorted_product_list;
     },
     sorted_product_list() {
-     let sorted 
-     this.dataviewValue? sorted = this.dataviewValue.slice().sort((a, b) => {
+     let sorted    
+     
+     this.filtered_extra_list? sorted = this.filtered_extra_list.slice().sort((a, b) => {
         if (a[this.order_by] > b[this.order_by]) {
           return 1;
         }
@@ -225,6 +227,7 @@ export default {
     
   },
   methods: {
+    
     verify_hour(){
       
       let hour = moment(new Date()).format(' HH:mm')         
@@ -240,20 +243,38 @@ export default {
     },
 
     organize_obj(){
-    
+      let sorted
+       this.dataviewValue? sorted = this.dataviewValue.slice().sort((a, b) => {
+        if (a[this.order_by] > b[this.order_by]) {
+          return 1;
+        }
+        return -1;
+      }) : null
+      if (this.order_type === 2) {
+        sorted = sorted.reverse();
+      }
+
+    this.dataviewValue = sorted
+             
     let categorias = []
+    let categorias_order = []
     let produtos = []
     let contador = 0
     this.dataviewValue.forEach((element) => {
       if(!categorias.includes(element.category)){
         categorias.push(element.category)
       }
-     });     
+     }); 
+     categorias_order.push(categorias[2])
+     categorias_order.push(categorias[4])
+     categorias_order.push(categorias[1])
+     categorias_order.push(categorias[3])
+     categorias_order.push(categorias[0])  
+          
     
-     categorias.forEach((categoria, index) => {  
+     categorias_order.forEach((categoria, index) => {  
       
-     this.dataviewValue.forEach(element => {
-                    
+     this.dataviewValue.forEach(element => {                    
         if(element.category == categoria){
          
           if(contador == index){
