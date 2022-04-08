@@ -28,19 +28,19 @@
                   <Toast />
                   <div class="col-12 lg:col-4 md:col-6 sm:col-12 flex justify-content-around">
                     <Button @click="filters.category = 'Lanches'" icon="bx bx-restaurant" label="Lanches" class="bg-red-custom button-filter mr-2 mt-2"/>
-                     <Button @click="filters.category = 'Tradicional'" icon="bx bx-restaurant" label="Tradicional" class="bg-red-custom button-filter mr-2 mt-2"/>
-                    <Button @click="filters.category = 'Porções'" icon="pi pi-moon" label="Porções" class="bg-black-custom  button-filter mr-2 mt-2"/>
+                    <Button @click="filters.category = 'Tradicional'" icon="bx bx-restaurant" label="Tradicional" class="bg-yellow-custom button-filter mr-2 mt-2"/>
                   </div>
                   <div class="col-12 lg:col-4 md:col-6 sm:col-12 flex justify-content-around">
+                    <Button @click="filters.category = 'Porções'" icon="pi pi-moon" label="Porções" class="bg-black-custom  button-filter mr-2 mt-2"/>
                     <Button @click="filters.category = 'Bebidas'" icon="bx bx-beer" label="Bebidas" class="bg-orange-custom button-filter mr-2 mt-2"/>
-                    <Button @click="filters.category = 'Sobremesas'" icon="bx bx-coffee-togo" label="Sobremesas" class="bg-redLight-custom button-filter mr-2 mt-2"/>
                   </div>
-                  <div class="col-12 lg:col-2  sm:col-12 flex justify-content-around">
+                  <div class="col-12 lg:col-4  sm:col-12 flex justify-content-around">
+                    <Button @click="filters.category = 'Sobremesas'" icon="bx bx-coffee-togo" label="Sobremesas" class="bg-redLight-custom button-filter mr-2 mt-2"/>
                     <Button @click="filters.category = ''" icon="pi pi-align-left" label="todos" class="bg-cianes-custom button-filter mr-2 mt-2"/>
                   </div>
                 </div>
 							</div>
-							<div class="col-2 text-right">
+							<div class="col-2 text-right" style="top: 8px; position: relative;">
 								<DataViewLayoutOptions v-model="layout" />
 							</div>
 						</div>

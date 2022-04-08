@@ -53,16 +53,23 @@
                                 <label for="nome" class="form_text">Primeiro nome</label>
                             </span>
                         </div>
-                        <div class="field col-12">
+                        <div class="field col-12 md:col-8">
                             <span class="p-float-label p-input-icon-left">
-                                <i class="pi pi-user" />
+                                <i class="pi pi-map-marker" />
                                 <InputText class="input_formT"  :class="{error: v$.address.$error, success: !v$.address.$error}" v-model="v$.address.$model" id="address"  type="text"/>
                                 <label for="address" class="form_text">Endereço</label>
                             </span>
                         </div>
+                        <div class="field col-12 md:col-4">
+                            <span class="p-float-label p-input-icon-left">
+                                <i class="pi pi-map-marker" />
+                                <InputText class="input_formT"  :class="{error: v$.number.$error, success: !v$.number.$error}" v-model="v$.number.$model" id="number"  type="text"/>
+                                <label for="number" class="form_text">Número</label>
+                            </span>
+                        </div>
                          <div class="field col-12 md:col-6">
                             <span class="p-float-label p-input-icon-left mt-5">
-                                <i class="pi pi-user" />
+                                <i class="pi pi-map" />
                                 <InputText class="input_formT"  :class="{error: v$.city.$error, success: !v$.city.$error}" v-model="v$.city.$model" id="city" type="text" />
                                 <label for="city" class="form_text">Cidade</label>
                             </span>
@@ -91,7 +98,7 @@
                             </div>
                         </div>
                         <div class="text-center col-12">                          
-                            <h5 class="text-center legenda">Deseja colocar Catchup?</h5>
+                            <h5 class="text-center legenda">Deseja colocar sache de catchup Heinz?</h5>
                             <ToggleButton v-model="toggleValue" onLabel="Não" offLabel="Sim" :style="{width: '10em'}"/>                    
                         </div>
                     </div>
@@ -131,6 +138,7 @@ import { required } from '@vuelidate/validators'
                 bairro: null,
                 address: null,
                 city: null,
+                number: null,
                 nome: null,
                 payment: null,
                 pedidos: [],
@@ -189,6 +197,7 @@ import { required } from '@vuelidate/validators'
             nome :{required},
             address :{required},
             city :{required},
+            number :{required},
             bairro: {required},
             payMoney: {required},
             troco: {required}
@@ -264,14 +273,14 @@ import { required } from '@vuelidate/validators'
                         element.payload.additional.forEach(add =>{
                              this.pedido_txt += add.name + "\n"
                         })
-                        this.pedido_txt += "----------------------- \n\n"  
+                        this.pedido_txt += "\n ----------------------- \n\n"  
                     });
                     this.pedido_txt += "frete: R$ " + this.bairro.price + "\n"                               
                     this.pedido_txt += "O pedido irá para o seguinte endereço: " + this.address +  ",\n"
+                    this.pedido_txt += "Nº " + this.number +  ",\n"
                     this.pedido_txt += "Cidade: " + this.city + ",\n"
                     this.pedido_txt += "bairro: "+ this.bairro.name + "\n"
-                    this.pedido_txt += "O metodo de pagamento será: " + this.payMoney.name + "\n"     
-                    this.pedido_txt += "O valor total será: " + this.total + "\n"                 
+                    this.pedido_txt += "O metodo de pagamento será: " + this.payMoney.name + ": \n"     
                     this.payMoney.name == 'Dinheiro'?  this.pedido_txt +="Total a pagar: "+ this.total_pedido() + " Com troco para: " + this.troco + "\n" : null
                     this.pedido_txt += "total a ser pago: " + this.total_pedido()
                     this.pedido_txt =  window.encodeURIComponent(this.pedido_txt);

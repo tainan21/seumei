@@ -1,3 +1,4 @@
+<!--
 <template>
   <div
     class="sidebar"
@@ -28,10 +29,7 @@
         id="btn"
         @click="isOpened = !isOpened"
       />
-    </div>
-
-   
-      
+    </div>      
       <div
         class="profile" 
       >
@@ -550,3 +548,4 @@
 }
 
 </style>
+/*
