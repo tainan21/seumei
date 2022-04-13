@@ -523,20 +523,6 @@
 			"optional": false
 		},
 		{
-			"id": "36",
-			"code": "36",
-			"name": "Copo de Churros",
-			"description": "GRANULADOS: Preto, Colorido Amendoim e Paçoca",
-			"image": "36.jpg",
-			"price": 11,
-			"category": "Sobremesas",
-			"quantity": 1,
-			"inventoryStatus": "Em estoque",
-			"rating": 5,
-			"additional":[],			
-			"optional": false
-		},
-		{
 			"id": "44",
 			"code": "44",
 			"name": "4 Batata P",
