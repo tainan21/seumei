@@ -79,6 +79,13 @@
                             <Dropdown class="form_text" :class="{error: v$.bairro.$error, success: !v$.bairro.$error}" id="bairro" v-model="bairro" @change="v$.payMoney.$touch()" :options="dropdownItems" optionLabel="name" placeholder="Bairro"></Dropdown>
                             <h6><span class="mr-1 mt-1 legenda" v-if="bairro" >Valor do Frete R$: {{bairro.price}}</span></h6>
                         </div>
+                        <div class="field col-12 md:col-12 margin_border">
+                            <span class="p-float-label p-input-icon-left">
+                                <i class="pi pi-user" />
+                                <Textarea  class="" v-model="obsText" id="obsText" rows="3" type="text"/>                                                      
+                                <label for="obsText" class="form_text">Deseja colocar alguma observação??</label>
+                            </span>
+                        </div>
                     </div>
                 </div>
                 <div class="col-12 lg:col-5 md:col-5 sm:col-12 p-3">
@@ -138,6 +145,7 @@ import { required } from '@vuelidate/validators'
                 bairro: null,
                 address: null,
                 city: null,
+                obsText: "",
                 number: null,
                 nome: null,
                 payment: null,
@@ -275,6 +283,7 @@ import { required } from '@vuelidate/validators'
                         })
                         this.pedido_txt += "\n ----------------------- \n\n"  
                     });
+                    this.pedido_txt += "Observações: " + this.obsText + ",\n"
                     this.pedido_txt += "frete: R$ " + this.bairro.price + "\n"                               
                     this.pedido_txt += "O pedido irá para o seguinte endereço: " + this.address +  ",\n"
                     this.pedido_txt += "Nº " + this.number +  ",\n"
