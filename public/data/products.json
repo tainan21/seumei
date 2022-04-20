@@ -155,6 +155,34 @@
 			"optional": true
 		},
 		{
+			"id": "41",
+			"code": "41",
+			"name": "Big Bang",
+			"description": "Pão de brioche (cortado em 3 fatias), 2 hambúrgueres artesanais 120G, Dobro de Queijo Prato, Cebola Picada, Pickles, Alface, Molho Big Bang e maionese",
+			"image": "41.jpeg",
+			"price": 23.00,
+			"category": "Lanches",
+			"quantity": 1,
+			"inventoryStatus": "Em estoque",
+			"rating": 5,
+			"additional":[],
+			"optional": true
+		},
+		{
+			"id": "42",
+			"code": "42",
+			"name": "Via Láctea",
+			"description": "Pão de brioche, Hambúrguer artesanal 150G, Queijo Provolone, Queijo Prato, Cheddar Cremoso, Catupiry, Catchup",
+			"image": "42.jpeg",
+			"price": 21.00,
+			"category": "Lanches",
+			"quantity": 1,
+			"inventoryStatus": "Em estoque",
+			"rating": 5,
+			"additional":[],
+			"optional": true
+		},
+		{
 			"id": "12",
 			"code": "12",
 			"name": "Júpiter",
