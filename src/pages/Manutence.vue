@@ -1,62 +1,18 @@
 <template>
-    <body class="bg-gradient">
-        <div class="container mx-auto">
-            <section class="flex flex-wrap lg:flex-nowrap justify-center h-screen relative">
-                <div class="my-auto font-poppins text-gray-200 text-center lg:text-left">
-                    <h1 class="font-medium text-5xl py-3">Esse site está<br>   em manutenção </h1>
-                    <p class="lg:w-5/6">site em manutenção</p>
-                    <div class="bg-gray-50 p-3 px-5 sm:w-96 rounded-md my-8 mx-auto lg:mx-0 flex">
-                        <input type="text" class="border-0 flex-grow" placeholder="Deixe seu email">
-                        <button class="text-gray-500 hover:text-red-400">Notifique me</button>
+    <div class="surface-card flex align-items-center justify-content-center min-h-screen min-w-screen overflow-hidden">
+        <div class="grid justify-content-center p-2 lg:p-0" style="min-width:80%">
+            <div class="col-12 xl:col-6" style="border-radius:56px; padding:0.3rem; background: linear-gradient(180deg, rgba(247, 149, 48, 0.4) 10%, rgba(247, 149, 48, 0) 30%);">
+                <div class="surface-card h-full w-full m-0 py-7 px-4" style="border-radius:53px;">
+                    <div class="grid flex flex-column align-items-center">
+                        <div class="flex justify-content-center align-items-center bg-orange-500 border-circle" style="width:3.2rem; height:3.2rem;">
+                            <i class="pi pi-fw pi-lock text-2xl text-50"></i>
+                        </div>
+                        <h1 class="text-900 font-bold text-4xl lg:text-5xl mb-2">GALAXIA BURGUER</h1>
+                        <span class="text-gray-600 text-center">Site em Manutenção!! <br> Aproveite e visite nosso restaurente!!<br>Iremos te esperar :)</span>
+                        <img src="layout/images/asset-access.svg" alt="Access denied" class="mt-5" width="80%">
                     </div>
                 </div>
-                <div class="my-auto text-center w-3/4 lg:w-2/5">
-                    <img class="rounded-full image1 animate-moveY" src="./assets/img1.jpg" alt="image1">
-                    <img class="image2 animate-rotateZ" src="./assets/img2.png" alt="image2">
-                    <img class="image3  animate-rotateZ" src="./assets/img3.png" alt="image3">
-                </div>
-            </section>
+            </div>
         </div>
-    </body>
+    </div>
 </template>
-<style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-.bg-gradient{
-    background: #8E2DE2;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #4A00E0, #8E2DE2);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #4A00E0, #8E2DE2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
-
-/* .image1{
-    animation: moveY 2s infinite;
-} */
-.image2{
-    position: absolute;
-    top: -110px;
-    left: -400px;
-    width: 20%;
-    opacity: 0.50;
-}
-
-.image3{
-    position: absolute;
-    top: 0px;
-    right: 200px;
-    width: 50%;
-    opacity: 0.30;
-    z-index: -99;
-}
-
-/* 
-@keyframes moveY {
-    0% { transform: translateY(0px)}
-    50% { transform: translateY(25px)}
-    100% { transform: translateY(0px)}
-} */
-
-</style>
